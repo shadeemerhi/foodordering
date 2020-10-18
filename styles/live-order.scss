@@ -1,0 +1,26 @@
+$main-color: #FDA50F;
+
+.live-order {
+  margin-top: 4rem;
+  height: 500px;
+  width: 90% !important;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 2px 3px #c9c9c9;
+}
+
+.fa-shopping-bag {
+  font-size: 16rem;
+  color: rgb(201, 201, 201);
+  padding: 2rem;
+}
+
+#empty-order-message {
+  font-size: 1rem;
+}
+
+.checkout-btn {
+  background-color: $main-color !important;
+  margin-top: 8rem;
+  color: #fff !important;
+}
