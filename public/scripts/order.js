@@ -38,21 +38,21 @@ $(document).ready(function() {
       desc,
       price
     }
-    console.log(item);
 
+    // Generating the new order element and inserting it into the DOM
     const $newItem = createOrderItem(item);
     $('.order-item-container').prepend($newItem);
-    console.log($newItem);
     console.log($('.order-item-container'));
   });
 
+  // Adding event listeners to each 'remove' button to remove items from order
   $('.order-item-container').on('click', '.remove-item-btn', function () {
-    console.log('hi');
     $(this).parent().parent().parent().parent().remove();
   });
 
-  $('.remove-item-btn').on('click', function() {
-    $(this).parent().parent().parent().parent().remove();
+  // Getting the value of the quantity input from the user
+  $('.order-item-container').on('change', '#item-quantity', function() {
+    const quantity = this.value;
+    console.log('quantity', quantity);
   });
-
 });
