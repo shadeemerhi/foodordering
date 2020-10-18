@@ -10,18 +10,26 @@ const router  = express.Router();
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
-    let query = `SELECT * FROM widgets`;
-    console.log(query);
+
+    let query = `SELECT * FROM dishes;`;
     db.query(query)
       .then(data => {
-        const widgets = data.rows;
-        res.json({ widgets });
+        const dishes = data.rows;
+        console.log(dishes);
+        templateVars = {
+          dishes
+        }
+        res.render('menu', templateVars);
       })
       .catch(err => {
         res
           .status(500)
           .json({ error: err.message });
       });
+  });
+
+  router.get('/submit', (req, res) => {
+    res.render('index');
   });
   return router;
 };

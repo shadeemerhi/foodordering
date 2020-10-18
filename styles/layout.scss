@@ -1,10 +1,22 @@
 // See: https://sass-lang.com/
+$main-color: #FDA50F;
 
 body {
-  background-color: #EEE;
+  background-color: rgb(232, 232, 232) !important;
+  font-family: 'Roboto', sans-serif !important;
+  letter-spacing: 0.5px;
 
   h1 {
-    color: #244751;
-
+    color: grey;
   }
+
+  .menu-section {
+    text-align: left;
+    border-bottom: 1px solid $main-color;
+    padding-bottom: 2px;
+  }
+}
+
+.main-container {
+  width: 85% !important;
 }
