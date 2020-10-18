@@ -1,12 +1,20 @@
+$main-color: #FDA50F;
+
 .dish-container {
   border-radius: 8px;
   box-shadow: 0px 2px 3px #c9c9c9;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  padding-top: 0.4rem;
-  height: 8rem;
+  height: 7.2rem;
+  padding: 5px;
   text-align: left;
   background: white;
+  transition: 0.3s ease-in-out;
+  // cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 4px 8px #7e7e7e;
+  }
 
   .item-name {
     font-size: 1.2rem;
@@ -19,5 +27,22 @@
 
   .item-price {
     font-size: 1.2rem;
+  }
+
+  .dispinline {
+    display: inline-block;
+  }
+
+  .add-item-btn {
+  background-color: $main-color !important;
+  margin-top: 2.2rem;
+  color: black;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    color: white;
+    background-color: #ffa813 !important;
+    border-radius: 10px;
+  }
   }
 }

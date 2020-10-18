@@ -22,6 +22,7 @@
 
     <!-- APP JS -->
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/order.js" async></script>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
@@ -34,7 +35,7 @@
     <br>
     <section class="container-fluid main-container text-center">
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-lg-8 menu-container">
           <h3 class="menu-section" id="section1">Starters</h3>
           <% for (const dish in dishes) { %>
             <div class="container-fluid dish-container">
@@ -50,52 +51,18 @@
                     <%=dishes[dish].price/100 + '.00'%>
                   </p>
                 </div>
-                <div class="col-lg-4">
-                </div>
-              </div>
-            </div>
-          <% } %>
-          <% for (const dish in dishes) { %>
-            <div class="container-fluid dish-container">
-              <div class="row">
-                <div class="col-lg-8">
-                  <p class="item-name" id=<%=dishes[dish].id%>>
-                    <%=dishes[dish].name%>
-                  </p>
-                  <p class="item-description" id=<%=dishes[dish].id%>>
-                    <%=dishes[dish].description%>
-                  </p>
-                  <p class="item-price" id=<%=dishes[dish].id%>>
-                    <%=dishes[dish].price/100 + '.00'%>
-                  </p>
-                </div>
-                <div class="col-lg-4">
-                </div>
-              </div>
-            </div>
-          <% } %>
-          <% for (const dish in dishes) { %>
-            <div class="container-fluid dish-container">
-              <div class="row">
-                <div class="col-lg-8">
-                  <p class="item-name" id=<%=dishes[dish].id%>>
-                    <%=dishes[dish].name%>
-                  </p>
-                  <p class="item-description" id=<%=dishes[dish].id%>>
-                    <%=dishes[dish].description%>
-                  </p>
-                  <p class="item-price" id=<%=dishes[dish].id%>>
-                    <%=dishes[dish].price/100 + '.00'%>
-                  </p>
-                </div>
-                <div class="col-lg-4">
+                <div class="container col-4 text-center align-middle">
+                  <button type="button" class="btn add-item-btn">Add Item</button>
                 </div>
               </div>
             </div>
           <% } %>
         </div>
-        <div class="col-lg-4 text-center order-container">
+        <div class="col-lg-4 col-md-12 text-center order-container">
           <div class="container live-order">
+            <div class="container your-order" id="your-order">
+              <p>Your Order</p>
+            </div>
             <div class="text-center">
               <i class="fas fa-shopping-bag"></i>
             </div>
