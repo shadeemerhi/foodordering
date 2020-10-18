@@ -38,16 +38,16 @@
         <div class="col-lg-8 menu-container">
           <h3 class="menu-section" id="section1">Starters</h3>
           <% for (const dish in dishes) { %>
-            <div class="container-fluid dish-container">
-              <div class="row">
-                <div class="col-lg-8">
-                  <p class="item-name" id=<%=dishes[dish].id%>>
+            <div class="container-fluid dish-container" id=<%=dishes[dish].id%>>
+              <div class="row item-container">
+                <div class="col-lg-8 item-info">
+                  <p class="item-name">
                     <%=dishes[dish].name%>
                   </p>
-                  <p class="item-description" id=<%=dishes[dish].id%>>
+                  <p class="item-description">
                     <%=dishes[dish].description%>
                   </p>
-                  <p class="item-price" id=<%=dishes[dish].id%>>
+                  <p class="item-price">
                     <%=dishes[dish].price/100 + '.00'%>
                   </p>
                 </div>
