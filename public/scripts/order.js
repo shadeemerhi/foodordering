@@ -52,7 +52,14 @@ $(document).ready(function() {
 
   // Getting the value of the quantity input from the user
   $('.order-item-container').on('change', '#item-quantity', function() {
+    $(this).keypress(function(event) {
+      const keyCode = event.keyCode;
+      if(keyCode === 13) {
+        $(this).blur();
+      }
+    });
     const quantity = this.value;
     console.log('quantity', quantity);
+    $(this).blur();
   });
 });
