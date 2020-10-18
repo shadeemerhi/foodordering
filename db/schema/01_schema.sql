@@ -1,0 +1,40 @@
+-- Drop and recreate Users table:
+
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS dishes CASCADE;
+DROP TABLE IF EXISTS orders CASCADE;
+DROP TABLE IF EXISTS order_items CASCADE;
+
+
+-- CREATE TABLE users (
+--   id SERIAL PRIMARY KEY NOT NULL,
+--   name VARCHAR(255) NULL
+--   username VARCHAR(255) NOT NULL,
+--   email VARCHAR(255) NOT NULL,
+--   password VARCHAR(255) NOT NULL,
+--   phone VARCHAR(15) NOT NULL
+-- );
+
+CREATE TABLE dishes(
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  description VARCHAR(255) NOT NULL,
+  price INTEGER NOT NULL DEFAULT 0,
+  category VARCHAR(255) NOT NULL,
+  photo_url VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE orders(
+  id SERIAL PRIMARY KEY NOT NULL,
+  -- user_id VARCHAR(255) REFERENCES users.id NOT NULL,    //STRETCH
+  -- total_price INTEGER NOT NULL DEFAULT 0,              //STRETCH
+  created_at TIMESTAMP
+);
+
+CREATE TABLE order_items(
+  id SERIAL PRIMARY KEY NOT NULL,
+  order_id INTEGER REFERENCES orders.id NOT NULL,
+  dish_id INTEGER REFERENCES dishes.id NOT NULL,
+  total_price INTEGER NOT NULL DEFAULT 0,
+  quantity INTEGER NOT NULL DEFAULT 0
+);
