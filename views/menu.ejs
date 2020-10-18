@@ -55,14 +55,52 @@
               </div>
             </div>
           <% } %>
+          <% for (const dish in dishes) { %>
+            <div class="container-fluid dish-container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <p class="item-name" id=<%=dishes[dish].id%>>
+                    <%=dishes[dish].name%>
+                  </p>
+                  <p class="item-description" id=<%=dishes[dish].id%>>
+                    <%=dishes[dish].description%>
+                  </p>
+                  <p class="item-price" id=<%=dishes[dish].id%>>
+                    <%=dishes[dish].price/100 + '.00'%>
+                  </p>
+                </div>
+                <div class="col-lg-4">
+                </div>
+              </div>
+            </div>
+          <% } %>
+          <% for (const dish in dishes) { %>
+            <div class="container-fluid dish-container">
+              <div class="row">
+                <div class="col-lg-8">
+                  <p class="item-name" id=<%=dishes[dish].id%>>
+                    <%=dishes[dish].name%>
+                  </p>
+                  <p class="item-description" id=<%=dishes[dish].id%>>
+                    <%=dishes[dish].description%>
+                  </p>
+                  <p class="item-price" id=<%=dishes[dish].id%>>
+                    <%=dishes[dish].price/100 + '.00'%>
+                  </p>
+                </div>
+                <div class="col-lg-4">
+                </div>
+              </div>
+            </div>
+          <% } %>
         </div>
-        <div class="col-lg-4 text-center">
+        <div class="col-lg-4 text-center order-container">
           <div class="container live-order">
             <div class="text-center">
               <i class="fas fa-shopping-bag"></i>
             </div>
             <div class="text-center" id="empty-order-message">
-              <p>Your order is empty! Add some items</p>
+              <p>Add some items!</p>
             </div>
             <div class="text-center d-flex" id="checkout-button">
               <button type="button" class="btn checkout-btn btn-block">Checkout</button>
