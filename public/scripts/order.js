@@ -1,9 +1,5 @@
 $(document).ready(function() {
 
-
-
-
-
   const createOrderItem = function(item) {
     // console.log(item);
     const $orderItem =
@@ -16,9 +12,12 @@ $(document).ready(function() {
             <p>${item.name}</p>
           </div>
           <div class="col-4 item-element">
-            <button type="button" class="btn">
-              <i class="fas fa-trash"></i>
-            </button>
+            <div class="row d-flex">
+              <p>$${item.price}</p>
+              <button type="button" class="btn remove-item-btn">
+              <i class="fas fa-minus-circle"></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>`;
@@ -29,9 +28,7 @@ $(document).ready(function() {
   console.log(addButtons);
 
   // Adding click event listeners to all 'add item' buttons to add to order
-  // $(addButtons).each(function(event) {
   $(addButtons).on('click', function (event) {
-    // $(this).parent().parent().parent().remove();
     const name = $(this).parent().parent().children('.item-info').children('.item-name').html().trim();
     const desc = $(this).parent().parent().children('.item-info').children('.item-description').html().trim();
     const price = $(this).parent().parent().children('.item-info').children('.item-price').html().trim();
@@ -48,22 +45,14 @@ $(document).ready(function() {
     console.log($newItem);
     console.log($('.order-item-container'));
   });
-  // });
 
+  $('.order-item-container').on('click', '.remove-item-btn', function () {
+    console.log('hi');
+    $(this).parent().parent().parent().parent().remove();
+  });
 
-  // console.log(addButtons[0].parents('.container').parents('.row'));
-
-
-  // $addButtons.on('click', function() {
-  //   const
-  // });
-  // Adding click event listeners to each 'add item' button
-  // $('.add-item-btn').on('click', function(event) {
-
-  // });
-
-
-
-
+  $('.remove-item-btn').on('click', function() {
+    $(this).parent().parent().parent().parent().remove();
+  });
 
 });
