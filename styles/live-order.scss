@@ -1,10 +1,14 @@
 $main-color: #FDA50F;
 
 .live-order {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: scroll;
   margin-top: 4rem;
   height: 500px;
   width: 30% !important;
-  background: white;
+  background: rgb(245, 245, 245);
   border-radius: 8px;
   box-shadow: 0px 2px 3px #c9c9c9;
   position: fixed;
@@ -35,3 +39,15 @@ $main-color: #FDA50F;
   margin-top: 7.5rem;
   color: #fff !important;
 }
+
+.order-item-container {
+
+  .order-item {
+    background-color: white;
+    border-radius: 8px;
+    margin: 0.5rem;
+  }
+}
+
+
+
