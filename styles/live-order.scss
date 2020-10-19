@@ -4,14 +4,17 @@ $main-color: #FDA50F;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow: scroll;
-  margin-top: 4rem;
+  overflow: auto;
+  overflow-x: hidden;
+  // overflow-y: hidden;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   height: 500px;
-  width: 30% !important;
+  // width: 100%;
   background: white;
   border-radius: 8px;
   box-shadow: 0px 2px 3px #f0f0f0;
-  position: fixed;
+  // position: fixed;
   right: 50px;
 
   #your-order {
@@ -19,6 +22,25 @@ $main-color: #FDA50F;
   }
 
 }
+
+.price-order-container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 30%;
+  margin-left: 2rem;
+
+  #total-price-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    // width: 30%;
+    // position: fixed;
+  }
+}
+
+
 
 #empty-order-elements {
 
@@ -87,10 +109,4 @@ $main-color: #FDA50F;
   }
 }
 
-#total-price-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 30%;
-  position: fixed;
-}
+

@@ -42,6 +42,14 @@ module.exports = (db) => {
     console.log('this is happening on the server', req.body);
     console.log('quantity', parseInt(Object.keys(thing)[0]));
 
+
+    // redirect to /confirmation with order data (ideally)
   });
+
+
+
+  router.get('/confirmation', (req, res) => {
+
+  })
   return router;
 };
