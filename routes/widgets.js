@@ -43,7 +43,9 @@ module.exports = (db) => {
     console.log('quantity', parseInt(Object.keys(thing)[0]));
 
 
+
     // redirect to /confirmation with order data (ideally)
+    res.render('/confirmation', orderData)
   });
 
 
