@@ -96,6 +96,13 @@ $(document).ready(function() {
     console.log('order submitted');
     const total = getTotalCost();
     console.log('total order cost', total);
+
+    // Sending the data to the twilio API to configure the text messages
+    // $.ajax({
+    //   url: '/checkout',
+    //   type: 'POST',
+    //   data: total
+    // }).then(() => console.log('Twilio'));
   });
 
 

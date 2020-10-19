@@ -8,18 +8,22 @@ const client = require('twilio')(accountSid, authToken);
 module.exports = () => {
   router.post("/", (req, res) => {
 
+    const data = req.body;
 
     client.messages.create({
 
-      body: 'You have received an order',
+      body: `You've receive an order for: $${data.total}`,
       from: '+15712003029',
       to: '+14036305730'
-    }).then(message => console.log(message.sid));
+    }).then(message => {
+      console.log(message.sid);
+      console.log('This worked hahaha');
+    });
 
     setTimeout(() => {
       client.messages.create({
 
-        body: 'come pick up your food',
+        body: `Come pick up your food that cost ${data.total}`,
         from: '+15712003029',
         to: '+12369911010'
       }).then(message => console.log(message.sid));
