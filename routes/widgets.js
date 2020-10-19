@@ -28,8 +28,16 @@ module.exports = (db) => {
       });
   });
 
-  router.get('/submit', (req, res) => {
-    res.render('index');
+  // router.get('/submit', (req, res) => {
+  //   res.render('index');
+  // });
+
+
+  router.post('/submit', (req, res) => {
+    const thing = req.body;
+    console.log('this is happening on the server', req.body);
+    console.log('quantity', parseInt(Object.keys(thing)[0]));
+
   });
   return router;
 };
