@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
   const createOrderItem = function(item) {
-    // console.log(item);
     const $orderItem =
     `<div class="container ml-auto align-middle" value=${item.id}>
         <div class="row order-item text-center">
@@ -13,7 +12,7 @@ $(document).ready(function() {
           </div>
           <div class="col-4 item-element">
             <div class="row d-flex">
-              <p class="item-price-text">$${item.price}</p>
+              <p class="item-price-text">${item.price}</p>
               <button type="button" class="btn remove-item-btn">
               <i class="fas fa-minus-circle"></i>
               </button>
@@ -25,7 +24,6 @@ $(document).ready(function() {
   }
 
   const addButtons = $('.add-item-btn');
-  console.log(addButtons);
 
   // Adding click event listeners to all 'add item' buttons to add to order
   $(addButtons).on('click', function (event) {
@@ -33,8 +31,6 @@ $(document).ready(function() {
     const desc = $(this).parent().parent().children('.item-info').children('.item-description').html().trim();
     const price = $(this).parent().parent().children('.item-info').children('.item-price').html().trim();
     const id = $(this).parent().parent().parent()[0].id;
-    // console.log('heres the item id', id[0].id);
-
 
     const item = {
       name,
@@ -42,32 +38,33 @@ $(document).ready(function() {
       price
     }
 
-    // $.ajax({
-    //   url: 'order/submit',
-    //   type: 'POST',
-    //   data: item
-    // }).then(() => console.log('post completed'));
-
-    // Generating the new order element and inserting it into the DOM
-    const $newItem = createOrderItem(item);
-    $('.order-item-container').prepend($newItem);
-    // Able to access the minimum value for price calculations
-    console.log($($newItem).find('#item-quantity')[0].min);
-
+    if ($('.order-item').length !== 0) {
+      if (!checkOrderForItem(name)) {
+        console.log(checkOrderForItem(name))
+        const $newItem = createOrderItem(item);
+        $('.order-item-container').prepend($newItem);
+        updatePrice();
+      } else {
+        alert(`${name} Already Added to Order!`);
+      }
+    } else {
+      const $newItem = createOrderItem(item);
+      $('.order-item-container').prepend($newItem);
+      $('.checkout-btn').toggleClass('disabled');
+      $('#empty-order-elements').toggleClass('hidden');
+      updatePrice();
+    }
   });
-
-    // NOT CURRENTLY WORKING - WILL PROBABLY DELETE
-    // Setting the quantity to a default value of 1 -
-    // console.log($($newItem).find('#item-quantity').value);
-    // $($newItem).find('#item-quantity').value = 1;
-  $('.order-item-container').on('DOMNodeInserted', '#item-quantity', function () {
-    console.log($(this).value);
-  });
-
 
   // Adding event listeners to each 'remove' button to remove items from order
   $('.order-item-container').on('click', '.remove-item-btn', function () {
     $(this).parent().parent().parent().parent().remove();
+    const orderItemElements = $('.order-item');
+    if (orderItemElements.length === 0) {
+      $('.checkout-btn').toggleClass('disabled');
+      $('#empty-order-elements').toggleClass('hidden');
+    }
+    updatePrice();
   });
 
   // Getting the value of the quantity input from the user
@@ -77,20 +74,13 @@ $(document).ready(function() {
       if(keyCode === 13) {
         $(this).blur();
       }
+
     });
-    // const quantity = Object.keys(this.value);
     const quantity = this.value;
-    console.log('lol', quantity);
-      $.ajax({
-      url: 'order/submit',
-      type: 'POST',
-      data: quantity
-    }).then(() => console.log('This is happening'));
+    $(this).attr('value', `${quantity}`);
     $(this).blur();
+    updatePrice();
   });
-
-
-
 
   $('.checkout-btn').on('click', function() {
     console.log('order submitted');
@@ -105,18 +95,34 @@ $(document).ready(function() {
     // }).then(() => console.log('Twilio'));
   });
 
+  // Checks if the item being added to the order is already in the order
+  const checkOrderForItem = function(selectedItem) {
+    const orderItemElements = $('.order-item');
+    let result = false;
+    $(orderItemElements).each(function() {
+      const tempItem = $(this).find('.item-name-text').html().trim();
+      if (tempItem === selectedItem) {
+        result = true;
+      }
+    });
+    return result;
+  }
 
-  const getTotalCost = function() {
+  const updatePrice = function() {
 
     const orderItemElements = $('.order-item');
     let totalCost = 0;
     $(orderItemElements).each(function() {
-    const item_name = $(this).find('.item-name-text').html();
     let itemCost = $(this).find('.item-price-text').html();
+    let quantity = $(this).find('#item-quantity')[0].attributes.value.nodeValue;
     itemCost = parseFloat(itemCost.slice(1));
-    totalCost += itemCost;
-    });
-    return totalCost;
-  }
 
+    // REMEMBER TO INCLUDE TAX
+    // totalCost += 1.05*quantity*itemCost;
+    totalCost += quantity*itemCost;
+    });
+
+    const totalElement = $('#order-total');
+    totalElement.html(`$${(Math.round(totalCost * 100) / 100).toFixed(2)}`);
+  }
 });

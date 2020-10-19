@@ -39,10 +39,14 @@ $main-color: #FDA50F;
   color: black;
   transition: 0.3s ease-in-out;
 
-  &:hover {
-    color: white;
-    background-color: #ffa813 !important;
-    border-radius: 10px;
-  }
+    &:hover {
+      color: white;
+      background-color: #ffa813 !important;
+      border-radius: 10px;
+    }
+
+    &:focus {
+      outline: none !important;
+    }
   }
 }

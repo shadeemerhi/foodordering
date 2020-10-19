@@ -4,14 +4,17 @@ $main-color: #FDA50F;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow: scroll;
-  margin-top: 4rem;
+  overflow: auto;
+  overflow-x: hidden;
+  // overflow-y: hidden;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   height: 500px;
-  width: 30% !important;
+  // width: 100%;
   background: white;
   border-radius: 8px;
   box-shadow: 0px 2px 3px #f0f0f0;
-  position: fixed;
+  // position: fixed;
   right: 50px;
 
   #your-order {
@@ -20,25 +23,60 @@ $main-color: #FDA50F;
 
 }
 
-.fa-shopping-bag {
-  font-size: 16rem;
-  color: rgb(201, 201, 201);
-  padding: 2rem;
+.price-order-container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 30%;
+  margin-left: 2rem;
 
-  .hidden {
-    color: black;
+  #total-price-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    // width: 30%;
+    // position: fixed;
   }
 }
 
-#empty-order-message {
-  font-size: 0.9rem;
+
+
+#empty-order-elements {
+
+  &.hidden {
+    display: none;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .fa-shopping-bag {
+    font-size: 14rem;
+    color: rgb(201, 201, 201);
+    padding: 2rem;
+  }
+
+  #empty-order-message {
+
+  }
 }
+
+
 
 .checkout-btn {
   background-color: $main-color !important;
   margin-top: 7.5rem;
   color: #fff !important;
+
+  &.disabled {
+    background-color: #c9c9c9 !important;
+    color: #707070;
+  }
 }
+
+
 
 .order-item-container {
 
@@ -65,13 +103,10 @@ $main-color: #FDA50F;
       margin-bottom: 0;
     }
 
-
-
     .fa-minus-circle {
       font-size: 1rem;
     }
   }
 }
-
 
 

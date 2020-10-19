@@ -37,18 +37,60 @@
       <div class="row">
         <div class="col-lg-8 menu-container">
           <h3 class="menu-section" id="section1">Starters</h3>
-          <% for (const dish in dishes) { %>
-            <div class="container-fluid dish-container" id=<%=dishes[dish].id%>>
+          <% for (const dish in apps) { %>
+            <div class="container-fluid dish-container" id=<%=apps[dish].id%>>
               <div class="row item-container">
                 <div class="col-lg-8 item-info">
                   <p class="item-name">
-                    <%=dishes[dish].name%>
+                    <%=apps[dish].name%>
                   </p>
                   <p class="item-description">
-                    <%=dishes[dish].description%>
+                    <%=apps[dish].description%>
                   </p>
                   <p class="item-price">
-                    <%=dishes[dish].price/100 + '.00'%>
+                    $<%=apps[dish].price/100 + '.00'%>
+                  </p>
+                </div>
+                <div class="container col-4 text-center align-middle">
+                  <button type="button" class="btn add-item-btn">Add Item</button>
+                </div>
+              </div>
+            </div>
+          <% } %>
+          <h3 class="menu-section" id="section1">Mains</h3>
+          <% for (const dish in apps) { %>
+            <div class="container-fluid dish-container" id=<%=mains[dish].id%>>
+              <div class="row item-container">
+                <div class="col-lg-8 item-info">
+                  <p class="item-name">
+                    <%=mains[dish].name%>
+                  </p>
+                  <p class="item-description">
+                    <%=mains[dish].description%>
+                  </p>
+                  <p class="item-price">
+                    $<%=mains[dish].price/100 + '.00'%>
+                  </p>
+                </div>
+                <div class="container col-4 text-center align-middle">
+                  <button type="button" class="btn add-item-btn">Add Item</button>
+                </div>
+              </div>
+            </div>
+          <% } %>
+          <h3 class="menu-section" id="section1">Desserts</h3>
+          <% for (const dish in desserts) { %>
+            <div class="container-fluid dish-container" id=<%=desserts[dish].id%>>
+              <div class="row item-container">
+                <div class="col-lg-8 item-info">
+                  <p class="item-name">
+                    <%=desserts[dish].name%>
+                  </p>
+                  <p class="item-description">
+                    <%=desserts[dish].description%>
+                  </p>
+                  <p class="item-price">
+                    $<%=desserts[dish].price/100 + '.00'%>
                   </p>
                 </div>
                 <div class="container col-4 text-center align-middle">
@@ -59,19 +101,27 @@
           <% } %>
         </div>
         <div class="col-lg-4 col-md-12 text-center order-container">
-          <div class="container live-order">
-            <div class="container" id="your-order">
-              <p>Your Order</p>
+          <div class="price-order-container">
+            <div class="container live-order">
+              <div class="container" id="your-order">
+                <p>Your Order</p>
+              </div>
+              <div class="order-item-container"></div>
+              <div id="empty-order-elements">
+                <div class="text-center" id="empty-order-icon">
+                  <i class="fas fa-shopping-bag"></i>
+                </div>
+                <div class="text-center" id="empty-order-message">
+                  <p>Add some items!</p>
+                </div>
+              </div>
+              <div class="text-center d-flex" id="checkout-button">
+                <button type="button" class="btn checkout-btn btn-block disabled">Checkout</button>
+              </div>
             </div>
-            <div class="order-item-container"></div>
-            <!-- <div class="text-center">
-              <i class="fas fa-shopping-bag"></i>
-            </div>
-            <div class="text-center" id="empty-order-message">
-              <p>Add some ms!</p>
-            </div> -->
-            <div class="text-center d-flex" id="checkout-button">
-              <button type="button" class="btn checkout-btn btn-block">Checkout</button>
+            <div class="container" id="total-price-container">
+              <h4>Order Total:</h4>
+              <p id="order-total">$0.00</p>
             </div>
           </div>
         </div>

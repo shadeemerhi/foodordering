@@ -7,6 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
+  const { groupItemsByCategory } = require('./helpers');
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -15,9 +16,12 @@ module.exports = (db) => {
     db.query(query)
       .then(data => {
         const dishes = data.rows;
-        console.log(dishes);
+        const groupedDishes = groupItemsByCategory(dishes);
+        // console.log(dishes);
         templateVars = {
-          dishes
+          apps: groupedDishes[0],
+          mains: groupedDishes[1],
+          desserts: groupedDishes[2]
         }
         res.render('menu', templateVars);
       })
@@ -38,6 +42,16 @@ module.exports = (db) => {
     console.log('this is happening on the server', req.body);
     console.log('quantity', parseInt(Object.keys(thing)[0]));
 
+
+
+    // redirect to /confirmation with order data (ideally)
+    res.render('/confirmation', orderData)
   });
+
+
+
+  router.get('/confirmation', (req, res) => {
+
+  })
   return router;
 };
