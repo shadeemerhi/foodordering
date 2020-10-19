@@ -75,25 +75,16 @@ $(document).ready(function() {
     updatePrice();
   });
 
-  $('.order-item-container').on('change', function() {
-
-  });
-
-
   $('.checkout-btn').on('click', function() {
     const total = updatePrice();
   });
-
 
   // Checks if the item being added to the order is already in the order
   const checkOrderForItem = function(selectedItem) {
     const orderItemElements = $('.order-item');
     let result = false;
-    console.log(orderItemElements);
     $(orderItemElements).each(function() {
       const tempItem = $(this).find('.item-name-text').html().trim();
-      console.log('temp', tempItem);
-      console.log('selected', selectedItem);
       if (tempItem === selectedItem) {
         console.log('her');
         result = true;
@@ -101,7 +92,6 @@ $(document).ready(function() {
     });
     return result;
   }
-
 
   const updatePrice = function() {
 
