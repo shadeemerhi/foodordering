@@ -20,25 +20,41 @@ $main-color: #FDA50F;
 
 }
 
-.fa-shopping-bag {
-  font-size: 16rem;
-  color: rgb(201, 201, 201);
-  padding: 2rem;
+#empty-order-elements {
 
-  .hidden {
-    color: black;
+  &.hidden {
+    display: none;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .fa-shopping-bag {
+    font-size: 14rem;
+    color: rgb(201, 201, 201);
+    padding: 2rem;
+  }
+
+  #empty-order-message {
+
   }
 }
 
-#empty-order-message {
-  font-size: 0.9rem;
-}
+
 
 .checkout-btn {
   background-color: $main-color !important;
   margin-top: 7.5rem;
   color: #fff !important;
+
+  &.disabled {
+    background-color: #c9c9c9 !important;
+    color: #707070;
+  }
 }
+
+
 
 .order-item-container {
 

@@ -45,11 +45,13 @@ $(document).ready(function() {
         $('.order-item-container').prepend($newItem);
         updatePrice();
       } else {
-        alert('Item Already Added to Order!');
+        alert(`${name} Already Added to Order!`);
       }
     } else {
       const $newItem = createOrderItem(item);
       $('.order-item-container').prepend($newItem);
+      $('.checkout-btn').toggleClass('disabled');
+      $('#empty-order-elements').toggleClass('hidden');
       updatePrice();
     }
   });
@@ -57,6 +59,11 @@ $(document).ready(function() {
   // Adding event listeners to each 'remove' button to remove items from order
   $('.order-item-container').on('click', '.remove-item-btn', function () {
     $(this).parent().parent().parent().parent().remove();
+    const orderItemElements = $('.order-item');
+    if (orderItemElements.length === 0) {
+      $('.checkout-btn').toggleClass('disabled');
+      $('#empty-order-elements').toggleClass('hidden');
+    }
     updatePrice();
   });
 
