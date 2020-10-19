@@ -1,7 +1,6 @@
 $(document).ready(function() {
 
   const createOrderItem = function(item) {
-    // console.log(item);
     const $orderItem =
     `<div class="container ml-auto align-middle" value=${item.id}>
         <div class="row order-item text-center">
@@ -32,8 +31,6 @@ $(document).ready(function() {
     const desc = $(this).parent().parent().children('.item-info').children('.item-description').html().trim();
     const price = $(this).parent().parent().children('.item-info').children('.item-price').html().trim();
     const id = $(this).parent().parent().parent()[0].id;
-    // console.log('heres the item id', id[0].id);
-
 
     const item = {
       name,
@@ -41,18 +38,20 @@ $(document).ready(function() {
       price
     }
 
-    // Generating the new order element and inserting it into the DOM
-    const $newItem = createOrderItem(item);
-    $('.order-item-container').prepend($newItem);
-
-    // WANT TO UPDATE PRICE HERE - AFTER ELEMENT HAS BEEN ADDED
-    updatePrice();
-
-
-    // Able to access the minimum value for price calculations
-    console.log($($newItem).find('#item-quantity')[0].min);
-    console.log($($newItem).find('#item-quantity'));
-
+    console.log($('.order-item').length);
+    if ($('.order-item').length !== 0) {
+      if (!checkOrderForItem(name)) {
+        console.log(checkOrderForItem(name))
+        const $newItem = createOrderItem(item);
+        $('.order-item-container').prepend($newItem);
+        updatePrice();
+      } else {
+        alert('Item Already Added to Order!');
+      }
+    } else {
+      const $newItem = createOrderItem(item);
+      $('.order-item-container').prepend($newItem);
+    }
   });
 
   // Adding event listeners to each 'remove' button to remove items from order
@@ -70,11 +69,8 @@ $(document).ready(function() {
       }
 
     });
-    // const quantity = Object.keys(this.value);
     const quantity = this.value;
     $(this).attr('value', `${quantity}`);
-    // console.log(this);
-    console.log('lol', quantity);
     $(this).blur();
     updatePrice();
   });
@@ -89,6 +85,24 @@ $(document).ready(function() {
   });
 
 
+  // Checks if the item being added to the order is already in the order
+  const checkOrderForItem = function(selectedItem) {
+    const orderItemElements = $('.order-item');
+    let result = false;
+    console.log(orderItemElements);
+    $(orderItemElements).each(function() {
+      const tempItem = $(this).find('.item-name-text').html().trim();
+      console.log('temp', tempItem);
+      console.log('selected', selectedItem);
+      if (tempItem === selectedItem) {
+        console.log('her');
+        result = true;
+      }
+    });
+    return result;
+  }
+
+
   const updatePrice = function() {
 
     const orderItemElements = $('.order-item');
@@ -97,11 +111,14 @@ $(document).ready(function() {
     let itemCost = $(this).find('.item-price-text').html();
     let quantity = $(this).find('#item-quantity')[0].attributes.value.nodeValue;
     itemCost = parseFloat(itemCost.slice(1));
+
+    // REMEMBER TO INCLUDE TAX
+    // totalCost += 1.05*quantity*itemCost;
     totalCost += quantity*itemCost;
     });
 
     const totalElement = $('#order-total');
-    totalElement.html(`$${totalCost}`);
+    totalElement.html(`$${(Math.round(totalCost * 100) / 100).toFixed(2)}`);
   }
 
 });
