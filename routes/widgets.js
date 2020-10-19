@@ -42,6 +42,8 @@ module.exports = (db) => {
     // console.log(JSON.parse(orderItems));
     console.log('items on server:', orderItems);
 
+    res.send('post reached');
+
     // redirect to /confirmation with order data (ideally)
     // res.render('/confirmation', orderData)
   });

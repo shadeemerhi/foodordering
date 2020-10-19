@@ -141,7 +141,7 @@ $(document).ready(function() {
       itemCost = parseFloat(itemCost.slice(1));
       const quantity = $(this).find('#item-quantity')[0].attributes.value.nodeValue;
       const totalCost = quantity*itemCost;
-      item['id'] = itemID;
+      item['dish_id'] = itemID;
       item['total_price'] = totalCost;
       item['quantity'] = quantity;
       item['name'] = itemName;
@@ -160,6 +160,6 @@ $(document).ready(function() {
       dataType: 'json',
       contentType: 'application/json',
       data
-    }).then(() => console.log('hehehe'));
+    }).then((data) => console.log(data));
   });
 });
