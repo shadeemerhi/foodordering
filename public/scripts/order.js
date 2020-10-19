@@ -13,7 +13,7 @@ $(document).ready(function() {
           </div>
           <div class="col-4 item-element">
             <div class="row d-flex">
-              <p class="item-price-text">$${item.price}</p>
+              <p class="item-price-text">${item.price}</p>
               <button type="button" class="btn remove-item-btn">
               <i class="fas fa-minus-circle"></i>
               </button>
@@ -25,7 +25,6 @@ $(document).ready(function() {
   }
 
   const addButtons = $('.add-item-btn');
-  console.log(addButtons);
 
   // Adding click event listeners to all 'add item' buttons to add to order
   $(addButtons).on('click', function (event) {
@@ -42,32 +41,24 @@ $(document).ready(function() {
       price
     }
 
-    // $.ajax({
-    //   url: 'order/submit',
-    //   type: 'POST',
-    //   data: item
-    // }).then(() => console.log('post completed'));
-
     // Generating the new order element and inserting it into the DOM
     const $newItem = createOrderItem(item);
     $('.order-item-container').prepend($newItem);
+
+    // WANT TO UPDATE PRICE HERE - AFTER ELEMENT HAS BEEN ADDED
+    updatePrice();
+
+
     // Able to access the minimum value for price calculations
     console.log($($newItem).find('#item-quantity')[0].min);
+    console.log($($newItem).find('#item-quantity'));
 
   });
-
-    // NOT CURRENTLY WORKING - WILL PROBABLY DELETE
-    // Setting the quantity to a default value of 1 -
-    // console.log($($newItem).find('#item-quantity').value);
-    // $($newItem).find('#item-quantity').value = 1;
-  $('.order-item-container').on('DOMNodeInserted', '#item-quantity', function () {
-    console.log($(this).value);
-  });
-
 
   // Adding event listeners to each 'remove' button to remove items from order
   $('.order-item-container').on('click', '.remove-item-btn', function () {
     $(this).parent().parent().parent().parent().remove();
+    updatePrice();
   });
 
   // Getting the value of the quantity input from the user
@@ -77,39 +68,40 @@ $(document).ready(function() {
       if(keyCode === 13) {
         $(this).blur();
       }
+
     });
     // const quantity = Object.keys(this.value);
     const quantity = this.value;
+    $(this).attr('value', `${quantity}`);
+    // console.log(this);
     console.log('lol', quantity);
-      $.ajax({
-      url: 'order/submit',
-      type: 'POST',
-      data: quantity
-    }).then(() => console.log('This is happening'));
     $(this).blur();
+    updatePrice();
   });
 
+  $('.order-item-container').on('change', function() {
 
+  });
 
 
   $('.checkout-btn').on('click', function() {
-    console.log('order submitted');
-    const total = getTotalCost();
-    console.log('total order cost', total);
+    const total = updatePrice();
   });
 
 
-  const getTotalCost = function() {
+  const updatePrice = function() {
 
     const orderItemElements = $('.order-item');
     let totalCost = 0;
     $(orderItemElements).each(function() {
-    const item_name = $(this).find('.item-name-text').html();
     let itemCost = $(this).find('.item-price-text').html();
+    let quantity = $(this).find('#item-quantity')[0].attributes.value.nodeValue;
     itemCost = parseFloat(itemCost.slice(1));
-    totalCost += itemCost;
+    totalCost += quantity*itemCost;
     });
-    return totalCost;
+
+    const totalElement = $('#order-total');
+    totalElement.html(`$${totalCost}`);
   }
 
 });

@@ -48,7 +48,7 @@
                     <%=apps[dish].description%>
                   </p>
                   <p class="item-price">
-                    <%=apps[dish].price/100 + '.00'%>
+                    $<%=apps[dish].price/100 + '.00'%>
                   </p>
                 </div>
                 <div class="container col-4 text-center align-middle">
@@ -69,7 +69,7 @@
                     <%=mains[dish].description%>
                   </p>
                   <p class="item-price">
-                    <%=mains[dish].price/100 + '.00'%>
+                    $<%=mains[dish].price/100 + '.00'%>
                   </p>
                 </div>
                 <div class="container col-4 text-center align-middle">
@@ -90,7 +90,7 @@
                     <%=desserts[dish].description%>
                   </p>
                   <p class="item-price">
-                    <%=desserts[dish].price/100 + '.00'%>
+                    $<%=desserts[dish].price/100 + '.00'%>
                   </p>
                 </div>
                 <div class="container col-4 text-center align-middle">
@@ -110,11 +110,15 @@
               <i class="fas fa-shopping-bag"></i>
             </div>
             <div class="text-center" id="empty-order-message">
-              <p>Add some ms!</p>
+              <p>Add some items!</p>
             </div> -->
             <div class="text-center d-flex" id="checkout-button">
               <button type="button" class="btn checkout-btn btn-block">Checkout</button>
             </div>
+          </div>
+          <div class="container" id="total-price-container">
+            <h4>Order Total:</h4>
+            <p id="order-total">$0.00</p>
           </div>
         </div>
       </div>

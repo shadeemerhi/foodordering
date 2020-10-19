@@ -65,13 +65,16 @@ $main-color: #FDA50F;
       margin-bottom: 0;
     }
 
-
-
     .fa-minus-circle {
       font-size: 1rem;
     }
   }
 }
 
-
-
+#total-price-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 30%;
+  position: fixed;
+}
