@@ -38,7 +38,6 @@ $(document).ready(function() {
       price
     }
 
-    console.log($('.order-item').length);
     if ($('.order-item').length !== 0) {
       if (!checkOrderForItem(name)) {
         console.log(checkOrderForItem(name))
@@ -51,6 +50,7 @@ $(document).ready(function() {
     } else {
       const $newItem = createOrderItem(item);
       $('.order-item-container').prepend($newItem);
+      updatePrice();
     }
   });
 
@@ -86,7 +86,6 @@ $(document).ready(function() {
     $(orderItemElements).each(function() {
       const tempItem = $(this).find('.item-name-text').html().trim();
       if (tempItem === selectedItem) {
-        console.log('her');
         result = true;
       }
     });
@@ -110,5 +109,4 @@ $(document).ready(function() {
     const totalElement = $('#order-total');
     totalElement.html(`$${(Math.round(totalCost * 100) / 100).toFixed(2)}`);
   }
-
 });
