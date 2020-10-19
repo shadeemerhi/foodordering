@@ -16,6 +16,14 @@ const dbParams = require('./lib/db.js');
 const db = new Pool(dbParams);
 db.connect();
 
+// Twilio
+const { SettingsContext } = require('twilio/lib/rest/voice/v1/dialingPermissions/settings');
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const  authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = require('twilio')(accountSid, authToken);
+
+
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -35,13 +43,14 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const widgetsRoutes = require("./routes/widgets");
-
+const twilioRoutes = require("./routes/twilio");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // app.use("/api/users", usersRoutes(db));
 // app.use("/api/widgets", widgetsRoutes(db));
 app.use('/order', widgetsRoutes(db));
-// Note: mount other resources here, using the same pattern above
+app.use('/checkout',twilioRoutes());
+ // Note: mount other resources here, using the same pattern above
 
 
 // Home page
