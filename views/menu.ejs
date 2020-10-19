@@ -38,16 +38,16 @@
         <div class="col-lg-8 menu-container">
           <h3 class="menu-section" id="section1">Starters</h3>
           <% for (const dish in dishes) { %>
-            <div class="container-fluid dish-container">
-              <div class="row">
-                <div class="col-lg-8">
-                  <p class="item-name" id=<%=dishes[dish].id%>>
+            <div class="container-fluid dish-container" id=<%=dishes[dish].id%>>
+              <div class="row item-container">
+                <div class="col-lg-8 item-info">
+                  <p class="item-name">
                     <%=dishes[dish].name%>
                   </p>
-                  <p class="item-description" id=<%=dishes[dish].id%>>
+                  <p class="item-description">
                     <%=dishes[dish].description%>
                   </p>
-                  <p class="item-price" id=<%=dishes[dish].id%>>
+                  <p class="item-price">
                     <%=dishes[dish].price/100 + '.00'%>
                   </p>
                 </div>
@@ -60,15 +60,16 @@
         </div>
         <div class="col-lg-4 col-md-12 text-center order-container">
           <div class="container live-order">
-            <div class="container your-order" id="your-order">
+            <div class="container" id="your-order">
               <p>Your Order</p>
             </div>
-            <div class="text-center">
+            <div class="order-item-container"></div>
+            <!-- <div class="text-center">
               <i class="fas fa-shopping-bag"></i>
             </div>
             <div class="text-center" id="empty-order-message">
-              <p>Add some items!</p>
-            </div>
+              <p>Add some ms!</p>
+            </div> -->
             <div class="text-center d-flex" id="checkout-button">
               <button type="button" class="btn checkout-btn btn-block">Checkout</button>
             </div>
