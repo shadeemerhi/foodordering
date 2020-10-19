@@ -7,7 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
-  const { groupItemsByCategory } = require('./helpers');
+const { groupItemsByCategory } = require('./helpers');
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -38,14 +38,12 @@ module.exports = (db) => {
 
 
   router.post('/submit', (req, res) => {
-    const thing = req.body;
-    console.log('this is happening on the server', req.body);
-    console.log('quantity', parseInt(Object.keys(thing)[0]));
-
-
+    const orderItems = req.body;
+    // console.log(JSON.parse(orderItems));
+    console.log('items on server:', orderItems);
 
     // redirect to /confirmation with order data (ideally)
-    res.render('/confirmation', orderData)
+    // res.render('/confirmation', orderData)
   });
 
 

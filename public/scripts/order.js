@@ -1,3 +1,5 @@
+// const { json } = require("body-parser");
+
 $(document).ready(function() {
 
   const createOrderItem = function(item) {
@@ -40,7 +42,6 @@ $(document).ready(function() {
 
     if ($('.order-item').length !== 0) {
       if (!checkOrderForItem(name)) {
-        console.log(checkOrderForItem(name))
         const $newItem = createOrderItem(item);
         $('.order-item-container').prepend($newItem);
         updatePrice();
@@ -125,4 +126,40 @@ $(document).ready(function() {
     const totalElement = $('#order-total');
     totalElement.html(`$${(Math.round(totalCost * 100) / 100).toFixed(2)}`);
   }
+
+  // Creates an array of all orderItems to send to the server
+  const createOrderItems = function() {
+
+    let orderItems = [];
+    const orderItemElements = $('.order-item');
+    console.log('order elements', orderItemElements);
+    orderItemElements.each(function(){
+      let item = {};
+      const itemID = $(this).parent().attr('value');
+      const itemName = $(this).find('.item-name-text').html().trim();
+      let itemCost = $(this).find('.item-price-text').html();
+      itemCost = parseFloat(itemCost.slice(1));
+      const quantity = $(this).find('#item-quantity')[0].attributes.value.nodeValue;
+      const totalCost = quantity*itemCost;
+      item['id'] = itemID;
+      item['total_price'] = totalCost;
+      item['quantity'] = quantity;
+      item['name'] = itemName;
+      orderItems.push(item);
+    });
+    return orderItems;
+  }
+
+  // Order submission when modal button is clicked - POST request to /submit endpoint
+  $('#final-submit-btn').on('click', function () {
+    const order = createOrderItems();
+    const data = JSON.stringify(order);
+    $.ajax({
+      url: 'order/submit',
+      type: 'POST',
+      dataType: 'json',
+      contentType: 'application/json',
+      data
+    }).then(() => console.log('hehehe'));
+  });
 });
