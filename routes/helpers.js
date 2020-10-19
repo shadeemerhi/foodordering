@@ -1,7 +1,3 @@
-
-
-// Seperates all of the menu items into seperate objects based on category
-
 const groupItemsByCategory = function(dishes) {
   let apps = [];
   let mains = [];
