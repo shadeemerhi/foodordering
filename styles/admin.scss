@@ -1,0 +1,62 @@
+$main-color: #FDA50F;
+
+#admin-form-container {
+  margin-top: 3rem;
+
+  .admin-submit-btn {
+    background-color: $main-color;
+  }
+}
+
+.all-orders-container {
+  margin: 2rem;
+}
+
+.order-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: white;
+  border: 1px solid #707070;
+
+  .id-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+  }
+
+  .all-items-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 33%;
+
+    .all-items-title {
+      text-align: center;
+    }
+
+    .item-container {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+
+  .price-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 33%;
+
+    .order-total-text {
+      text-align: center;
+    }
+
+    .total-price-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
+
+

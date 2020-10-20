@@ -7,7 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const { groupItemsByCategory, getOrderTotal, createQueryValues } = require('./helpers');
+const { groupItemsByCategory, getOrderTotal, createQueryValues, groupItemsByOrder } = require('./helpers');
 
 module.exports = (db) => {
 
@@ -71,7 +71,7 @@ module.exports = (db) => {
   router.get('/admin', (req, res) => {
 
     const query =
-    `SELECT orders.id, dishes.name, orders.total_price, status FROM orders
+    `SELECT orders.id, dishes.name, orderItems.quantity, orders.total_price, status FROM orders
       JOIN orderItems ON order_id = orders.id
       JOIN dishes ON orderItems.dish_id = dishes.id
       ORDER BY order_id;`;
@@ -79,9 +79,10 @@ module.exports = (db) => {
       db.query(query)
       .then(data => {
         const orderDetails = data.rows;
-        console.log(orderDetails);
+        const orders = groupItemsByOrder(orderDetails);
+        console.log('details for page', orders);
         templateVars = {
-          orderDetails
+          orders
         };
         res.render('admin', templateVars);
       })

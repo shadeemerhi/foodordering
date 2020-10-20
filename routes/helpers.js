@@ -58,33 +58,42 @@ const getOrderMessage = function(orderItems) {
   return orderMessage;
 }
 
-// const groupOrderItemsByOrder = function(tableData) {
-//   let index = 0;
-//   let i = 1;
-//   let orderMap = {};
+const unique = (value, index, self) => {
+  return self.indexOf(value) === index
+}
 
-//   while(index < tableData.length) {
-//     if() {
 
-//     }
-//     if(tableData[index].id !== i) {
-//       orderMap[i+1].push(tableData[index].name);
-//     } else {
-//       orderMap[i] = tableData[index].name
+const groupItemsByOrder = function(orderData) {
 
-//     }
-//   }
+  let orderIds = [];
+  for (const item of orderData) {
+    orderIds.push(item.id);
+  }
 
-//   let arr = [1,1,1,1,3,3,3,3,3,4];
-//   const unique = (value, index, self) => {
-//     return self.indexOf(value) === index
-//   }
+  const uniqueOrderIds = orderIds.filter(unique);
 
-//   const ages = [26, 27, 26, 26, 28, 28, 29, 29, 30]
-//   const uniqueAges = ages.filter(unique)
+  let index = 0;
+  let output = [];
+  for (let i = 1; i < uniqueOrderIds.length+1; i++) {
+    output[i] = {};
+    output[i].id = i;
+    output[i]['items'] = [];
+    output[i]['quantity'] = [];
+    output[i]['total_price'] = null;
+    output[i]['status'] = null;
+    for (let j = index; j < orderData.length; j++) {
+      if(orderData[j].id !== i) {
+        index = j;
+        break
+      } else {
+        output[i]['items'].push(orderData[j].name);
+        output[i]['quantity'].push(orderData[j].quantity);
+        output[i]['total_price'] = orderData[j].total_price;
+        output[i]['status'] = orderData[j].status;
+      }
+    }
+  }
+  return output.slice(1).reverse();
+}
 
-//   console.log(uniqueAges)
-
-// }
-
-module.exports = { groupItemsByCategory, getOrderTotal, createQueryValues, getOrderMessage };
+module.exports = { groupItemsByCategory, getOrderTotal, createQueryValues, getOrderMessage, groupItemsByOrder };

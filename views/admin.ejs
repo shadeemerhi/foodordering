@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="../styles/header.css" type="text/css" />
     <link rel="stylesheet" href="../styles/dishes.css" type="text/css" />
     <link rel="stylesheet" href="../styles/live-order.css" type="text/css" />
-    <link rel="stylesheet" href="../styles/admin-submit.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/admin.css" type="text/css" />
 
 
     <!-- NOT SURE IF WE NEED jQuery BELOW -->
@@ -36,24 +36,29 @@
       <%- include('partials/header.ejs') %>
     </header>
     <div class="row">
-      <div class="col-lg-8 menu-container">
-        <h3 class="menu-section" id="section1">Orders</h3>
-        <% for (const orderDetail of orderDetails) { %>
-        <div class="container-fluid dish-container" id=<%=orderDetail.id%>>
-          <div class="row item-container">
-            <div class="col-lg-8 item-info">
-              <p class="item-name">
-                <%=orderDetail.name%>
-              </p>
-              <p class="item-price">
-                $<%=orderDetail.total_price + '.00'%>
-              </p>
+      <div class="col-lg-8 all-orders-container">
+        <h3 class="order-section" id="in-progress">Orders</h3>
+        <% for (const order of orders) { %>
+          <article class="order-container">
+            <div class="id-container">
+              <p><%=order.id %></p>
             </div>
-            <div class="container col-4 text-center align-middle">
-              <button type="button" class="btn add-item-btn">Add Item</button>
+            <div class="all-items-container">
+              <p class="all-items-title">Items</p>
+              <% for (const item in order.items) { %>
+                <div class="item-container">
+                  <p class="item-quantity"><%=order.quantity[item]%></p>
+                  <p class="item-price"><%=order.items[item]%></p>
+                </div>
+              <% } %>
             </div>
-          </div>
-        </div>
+              <div class="price-container">
+                <p class="order-total-text">Order Total</p>
+                <div class="total-price-container">
+                  <p class="order-total-price"><%=order['total_price']%></p>
+                </div>
+              </div>
+          </article>
         <% } %>
       </div>
       <div class="col-lg-4">

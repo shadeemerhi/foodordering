@@ -88,12 +88,6 @@ $(document).ready(function() {
     const total = getTotalCost();
     console.log('total order cost', total);
 
-    // Sending the data to the twilio API to configure the text messages
-    // $.ajax({
-    //   url: '/checkout',
-    //   type: 'POST',
-    //   data: total
-    // }).then(() => console.log('Twilio'));
   });
 
   // Checks if the item being added to the order is already in the order
