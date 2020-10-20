@@ -34,5 +34,25 @@
     <header>
       <%- include('partials/header.ejs') %>
     </header>
+    <div class="col-lg-8 menu-container">
+      <h3 class="menu-section" id="section1">Orders</h3>
+      <% for (const orderDetail of orderDetails) { %>
+      <div class="container-fluid dish-container" id=<%=orderDetail.id%>>
+        <div class="row item-container">
+          <div class="col-lg-8 item-info">
+            <p class="item-name">
+              <%=orderDetail.name%>
+            </p>
+            <p class="item-price">
+              $<%=orderDetail.total_price + '.00'%>
+            </p>
+          </div>
+          <div class="container col-4 text-center align-middle">
+            <button type="button" class="btn add-item-btn">Add Item</button>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
   </body>
 </html>

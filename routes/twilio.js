@@ -15,9 +15,11 @@ module.exports = () => {
     const orderMessage = getOrderMessage(orderData);
     const orderTotal = getOrderTotal(orderData);
 
+    console.log('THING BEING SENT: ', orderMessage, orderTotal);
+
     client.messages.create({
 
-      body: `Order received: ${orderMessage}. Total Amount: ${orderTotal}`,
+      body: `Order received: ${orderMessage}. Total Amount: $${orderTotal}`,
       from: '+15712003029',
       to: '+14039753519'
     }).then(message => {

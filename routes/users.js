@@ -70,8 +70,26 @@ module.exports = (db) => {
 
   router.get('/admin', (req, res) => {
 
-    templateVars = {};
-    res.render('admin', templateVars);
+    const query =
+    `SELECT orders.id, dishes.name, orders.total_price FROM orders
+      JOIN orderItems ON order_id = orders.id
+      JOIN dishes ON orderItems.dish_id = dishes.id;`;
+
+      db.query(query)
+      .then(data => {
+        const orderDetails = data.rows;
+        // console.log(orders);
+        templateVars = {
+          orderDetails
+        };
+        res.render('admin', templateVars);
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+
   });
 
   router.get('/confirmed', (req, res) => {
