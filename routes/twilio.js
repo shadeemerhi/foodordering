@@ -34,5 +34,23 @@ module.exports = () => {
 
   });
 
+  router.post("/admin/response", (req, res) => {
+
+    const data = req.body;
+
+    client.messages.create({
+
+      body: `Your order will take this many minutes: $${data.total}`,
+      from: '+15712003029',
+      to: '+14036305730'
+    }).then(message => {
+      console.log(message.sid);
+      console.log('This worked hahaha');
+    });
+
+    res.send('we are in twilio');
+
+  });
+
   return router;
 };
