@@ -7,7 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const { groupItemsByCategory } = require('./helpers');
+const { groupItemsByCategory, getOrderTotal } = require('./helpers');
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
@@ -36,11 +36,24 @@ module.exports = (db) => {
   //   res.render('index');
   // });
 
+  // items on server: [ { dish_id: '4', total_price: 3, quantity: '1', name: 'Thai soup' },
+  // { dish_id: '3', total_price: 3, quantity: '1', name: 'Soup' } ]
 
   router.post('/submit', (req, res) => {
     const orderItems = req.body;
     // console.log(JSON.parse(orderItems));
     console.log('items on server:', orderItems);
+    const orderTotal = getOrderTotal(orderItems);
+    let query =
+    `INSERT INTO orders (user_id, total_price)
+    VALUES (${1}, ${orderTotal})
+    RETURNING *;`
+
+    return db.query(query).then(objectNew => console.log('Order Details', objectNew.rows[0])).catch(e => console.log(e));
+
+      // let query2 =
+      //   `INSERT INTO orderITEMS (order_id)VALUES $; `
+      //   db.query(query2)
 
     res.send('post reached');
 

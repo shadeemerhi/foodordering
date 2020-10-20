@@ -12,9 +12,17 @@ const groupItemsByCategory = function(dishes) {
       desserts.push(dish);
     }
   }
-
   return [apps, mains, desserts];
+};
 
-}
+const getOrderTotal = function(orderItems) {
 
-module.exports = { groupItemsByCategory };
+  let total = 0;
+  orderItems.forEach(item => {
+    total += item.total_price;
+  });
+
+  return total;
+};
+
+module.exports = { groupItemsByCategory, getOrderTotal };
