@@ -96,7 +96,19 @@ module.exports = (db) => {
 
   router.get('/confirmation', (req, res) => {
     console.log('we are in confirmation');
-    res.render('confirmation');
+
+    const order = { id: 9,
+      items: [ 'Ice Cream', 'Pizza', 'Steak', 'Hamburger' ],
+      quantity: [ 1, 4, 1, 1 ],
+      item_price: [ 1, 5, 5, 5 ],
+      total_price: 31,
+      status: true};
+
+    templateVars = {
+      order
+    }
+
+    res.render('confirmation', templateVars);
   });
   return router;
 };
