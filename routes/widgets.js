@@ -49,7 +49,11 @@ module.exports = (db) => {
     VALUES (${1}, ${orderTotal})
     RETURNING *;`
 
-    return db.query(query).then(objectNew => console.log('Order Details', objectNew.rows[0])).catch(e => console.log(e));
+    return db.query(query)
+    .then(objectNew => {
+      const order_id =  objectNew.rows[0];
+
+    });
 
       // let query2 =
       //   `INSERT INTO orderITEMS (order_id)VALUES $; `

@@ -14,8 +14,8 @@ $main-color: #FDA50F;
   background: white;
   border-radius: 8px;
   box-shadow: 0px 2px 3px #f0f0f0;
-  // position: fixed;
-  right: 50px;
+  position: relative;
+  // right: 50px;
 
   #your-order {
     border-bottom: 1px solid $main-color;
@@ -40,9 +40,15 @@ $main-color: #FDA50F;
   }
 }
 
-
+#your-order{
+  p{
+    height: 50px;
+    margin-bottom: 0;
+  }
+}
 
 #empty-order-elements {
+
 
   &.hidden {
     display: none;
@@ -63,12 +69,17 @@ $main-color: #FDA50F;
   }
 }
 
-
+#checkout-button{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
 .checkout-btn {
   background-color: $main-color !important;
-  margin-top: 7.5rem;
   color: #fff !important;
+  height: 50px;
 
   &.disabled {
     background-color: #c9c9c9 !important;
@@ -82,13 +93,20 @@ $main-color: #FDA50F;
 }
 
 .order-item-container {
+  height: calc(100% - 50px);
+  margin-bottom: 50px;
+  overflow-y: auto;
+
+  // .container{
+  //   height: 100%;
+  // }
 
   .order-item {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: rgb(242, 242, 242);
+    background-color: transparent;
     border-radius: 8px;
     // border: 1px solid #c7c7c7;
     margin: 0.5rem;
