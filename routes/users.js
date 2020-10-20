@@ -71,7 +71,7 @@ module.exports = (db) => {
   router.get('/admin', (req, res) => {
 
     const query =
-    `SELECT orders.id, dishes.name, orderItems.quantity, orders.total_price, status FROM orders
+      `SELECT orders.id, dishes.name, dishes.price, orderItems.quantity, orders.total_price, orders.created_at, status FROM orders
       JOIN orderItems ON order_id = orders.id
       JOIN dishes ON orderItems.dish_id = dishes.id
       ORDER BY order_id;`;

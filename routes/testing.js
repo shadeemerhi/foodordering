@@ -25,8 +25,11 @@ const groupItemsByOrder = function(orderData) {
     output[i].id = i;
     output[i]['items'] = [];
     output[i]['quantity'] = [];
+    output[i]['item_price'] = [];
     output[i]['total_price'] = null;
     output[i]['status'] = null;
+    output[i]['created_at'] = null;
+
     for (let j = index; j < orderData.length; j++) {
       if(orderData[j].id !== i) {
         index = j;
@@ -34,13 +37,22 @@ const groupItemsByOrder = function(orderData) {
       } else {
         output[i]['items'].push(orderData[j].name);
         output[i]['quantity'].push(orderData[j].quantity);
+        output[i]['item_price'].push(orderData[j].item_price);
         output[i]['total_price'] = orderData[j].total_price;
         output[i]['status'] = orderData[j].status;
+        output[i]['created_at'] = orderData[j].created_at;
       }
     }
   }
   return output;
 }
+
+SELECT dishes.name, orderItem.quantity, dishes.price
+
+SELECT orders.id, dishes.name, dishes.price, orderItems.quantity, orders.total_price, orders.created_at, status FROM orders
+      JOIN orderItems ON order_id = orders.id
+      JOIN dishes ON orderItems.dish_id = dishes.id
+      ORDER BY order_id;
 
 const orderData = [  { id: 1, name: 'Soup', quantity: 1, total_price: 21, status: true },
   {

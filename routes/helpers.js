@@ -79,8 +79,10 @@ const groupItemsByOrder = function(orderData) {
     output[i].id = i;
     output[i]['items'] = [];
     output[i]['quantity'] = [];
+    output[i]['item_price'] = [];
     output[i]['total_price'] = null;
     output[i]['status'] = null;
+    output[i]['created_at'] = null;
     for (let j = index; j < orderData.length; j++) {
       if(orderData[j].id !== i) {
         index = j;
@@ -88,8 +90,10 @@ const groupItemsByOrder = function(orderData) {
       } else {
         output[i]['items'].push(orderData[j].name);
         output[i]['quantity'].push(orderData[j].quantity);
+        output[i]['item_price'].push(orderData[j].price/100);
         output[i]['total_price'] = orderData[j].total_price;
         output[i]['status'] = orderData[j].status;
+        output[i]['created_at'] = orderData[j].created_at;
       }
     }
   }
