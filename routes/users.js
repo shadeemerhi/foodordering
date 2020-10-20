@@ -71,15 +71,15 @@ module.exports = (db) => {
   router.get('/admin', (req, res) => {
 
     const query =
-    `SELECT orders.id, dishes.name, orders.total_price FROM orders
+    `SELECT orders.id, dishes.name, orders.total_price, status FROM orders
       JOIN orderItems ON order_id = orders.id
       JOIN dishes ON orderItems.dish_id = dishes.id
-      ORDER BY order_id DESC;`;
+      ORDER BY order_id;`;
 
       db.query(query)
       .then(data => {
         const orderDetails = data.rows;
-        // console.log(orders);
+        console.log(orderDetails);
         templateVars = {
           orderDetails
         };

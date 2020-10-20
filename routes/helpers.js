@@ -58,4 +58,19 @@ const getOrderMessage = function(orderItems) {
   return orderMessage;
 }
 
+// const groupOrderItemsByOrder = function(tableData) {
+//   let index = 0;
+//   let i = 1;
+//   let orderMap = {};
+
+//   while(index < tableData.length) {
+//     if() {
+
+//     }
+//     if(tableData[index].id !== i) {
+//       orderMap[i+1].push(tableData[index].name);
+//     }
+//   }
+// }
+
 module.exports = { groupItemsByCategory, getOrderTotal, createQueryValues, getOrderMessage };

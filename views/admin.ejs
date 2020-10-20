@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="../styles/header.css" type="text/css" />
     <link rel="stylesheet" href="../styles/dishes.css" type="text/css" />
     <link rel="stylesheet" href="../styles/live-order.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/admin-submit.css" type="text/css" />
 
 
     <!-- NOT SURE IF WE NEED jQuery BELOW -->
@@ -34,25 +35,38 @@
     <header>
       <%- include('partials/header.ejs') %>
     </header>
-    <div class="col-lg-8 menu-container">
-      <h3 class="menu-section" id="section1">Orders</h3>
-      <% for (const orderDetail of orderDetails) { %>
-      <div class="container-fluid dish-container" id=<%=orderDetail.id%>>
-        <div class="row item-container">
-          <div class="col-lg-8 item-info">
-            <p class="item-name">
-              <%=orderDetail.name%>
-            </p>
-            <p class="item-price">
-              $<%=orderDetail.total_price + '.00'%>
-            </p>
-          </div>
-          <div class="container col-4 text-center align-middle">
-            <button type="button" class="btn add-item-btn">Add Item</button>
+    <div class="row">
+      <div class="col-lg-8 menu-container">
+        <h3 class="menu-section" id="section1">Orders</h3>
+        <% for (const orderDetail of orderDetails) { %>
+        <div class="container-fluid dish-container" id=<%=orderDetail.id%>>
+          <div class="row item-container">
+            <div class="col-lg-8 item-info">
+              <p class="item-name">
+                <%=orderDetail.name%>
+              </p>
+              <p class="item-price">
+                $<%=orderDetail.total_price + '.00'%>
+              </p>
+            </div>
+            <div class="container col-4 text-center align-middle">
+              <button type="button" class="btn add-item-btn">Add Item</button>
+            </div>
           </div>
         </div>
+        <% } %>
       </div>
-      <% } %>
+      <div class="col-lg-4">
+        <div id="admin-form-container">
+          <form class="form-inline">
+            <div class="form-group mx-sm-3 mb-2">
+              <label for="inputPassword2" class="sr-only">Password</label>
+              <input type="password" class="form-control" id="inputPassword2" placeholder="Completion Time">
+            </div>
+            <button type="submit" class="btn admin-submit-btn mb-2">Submit</button>
+          </form>
+        </div>
+      </div>
     </div>
   </body>
 </html>
