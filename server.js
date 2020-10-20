@@ -47,9 +47,9 @@ const widgetsRoutes = require("./routes/widgets");
 const twilioRoutes = require("./routes/twilio");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
-// app.use("/api/users", usersRoutes(db));
+app.use("/users", usersRoutes(db));
 // app.use("/api/widgets", widgetsRoutes(db));
-app.use('/order', widgetsRoutes(db));
+// app.use('/order', widgetsRoutes(db));
 app.use('/checkout',twilioRoutes());
  // Note: mount other resources here, using the same pattern above
 

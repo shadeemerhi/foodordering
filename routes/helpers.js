@@ -12,9 +12,7 @@ const groupItemsByCategory = function(dishes) {
       desserts.push(dish);
     }
   }
-
   return [apps, mains, desserts];
-
 }
 
 module.exports = { groupItemsByCategory };

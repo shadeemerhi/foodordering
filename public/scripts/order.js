@@ -155,7 +155,7 @@ $(document).ready(function() {
     const order = createOrderItems();
     const data = JSON.stringify(order);
     $.ajax({
-      url: 'order/submit',
+      url: '/users/submit',
       type: 'POST',
       dataType: 'json',
       contentType: 'application/json',
