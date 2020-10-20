@@ -27,12 +27,6 @@ const getOrderTotal = function(orderItems) {
 
 const createQueryValues = function(order_id, orderItems) {
   let queryInsert = `INSERT INTO orderItems(order_id, dish_id, total_price, quantity) VALUES `;
-  // orderItems.forEach(item => {
-
-  //   if (item.id = orderItems)
-  //   let tempValue = ` (${order_id}, ${item.dish_id}, ${item.total_price}, ${item.quantity}), `;
-  //   queryInsert += tempValue;
-  // });
 
   for (let i = 0; i < orderItems.length; i++) {
 
@@ -47,4 +41,21 @@ const createQueryValues = function(order_id, orderItems) {
   return queryInsert;
 }
 
-module.exports = { groupItemsByCategory, getOrderTotal, createQueryValues };
+// [ { dish_id: '3', total_price: 3, quantity: '1', name: 'Calamari' },
+//   { dish_id: '2', total_price: 3, quantity: '1', name: 'Poke Bowl' } ]
+
+const getOrderMessage = function(orderItems) {
+
+  let orderMessage = '';
+  for (let i = 0; i < orderItems.length; i++) {
+    if (i !== orderItems.length - 1) {
+      itemString = `${orderItems[i].quantity} ${orderItems[i].name}, `;
+    } else {
+      itemString = `${orderItems[i].quantity} ${orderItems[i].name}`;
+    }
+    orderMessage += itemString;
+  }
+  return orderMessage;
+}
+
+module.exports = { groupItemsByCategory, getOrderTotal, createQueryValues, getOrderMessage };

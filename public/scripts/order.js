@@ -160,6 +160,16 @@ $(document).ready(function() {
       dataType: 'json',
       contentType: 'application/json',
       data
-    }).then((data) => console.log(data));
+    })
+    .then(
+      $.ajax({
+        url: '/checkout',
+        type: 'POST',
+        dataType: 'json',
+        contentType: 'application/json',
+        data
+      }).then(window.location.href = '/users/confirmed')
+    )
+    .catch(e => console.log(e));
   });
 });

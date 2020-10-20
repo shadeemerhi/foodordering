@@ -39,9 +39,8 @@ module.exports = (db) => {
 
 
   router.post('/submit', (req, res) => {
+
     const orderItems = req.body;
-    // console.log(JSON.parse(orderItems));
-    console.log('items on server:', orderItems);
     const orderTotal = getOrderTotal(orderItems);
     let query =
     `INSERT INTO orders (user_id, total_price)
@@ -55,13 +54,14 @@ module.exports = (db) => {
       let query2 = createQueryValues(order_id, orderItems);
       console.log(query2);
       db.query(query2)
-      .then(() => console.log('orderItems inserted into database'))
+      .then(() => res.send('orderItems inserted into database'))
       .catch(e => console.log(e));
     })
     .catch(e => console.log(e));
 
-    // res.send('post reached');
+    // res.redirect('/users/confirmed');
 
+    res.send('hello');
     // redirect to /confirmation with order data (ideally)
     // res.render('/confirmation', orderData)
   });
@@ -70,11 +70,13 @@ module.exports = (db) => {
 
   router.get('/admin', (req, res) => {
 
-    //
-
-
     templateVars = {};
     res.render('admin', templateVars);
+  });
+
+  router.get('/confirmed', (req, res) => {
+    console.log('we are in confirmed');
+    res.render('confirmed');
   });
   return router;
 };
