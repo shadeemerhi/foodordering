@@ -1,38 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Restaurant | Confirmed</title>
 
-    <!-- Bootstrap CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<head>
+  <title>Restaurant | Confirmed</title>
 
-    <!-- Font Awesome -->
-    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/v4-shims.js"></script>
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-    <!-- External JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/v4-shims.js"></script>
 
-    <!-- App JS -->
+  <!-- External JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="../styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="../styles/header.css" type="text/css" />
-    <link rel="stylesheet" href="../styles/dishes.css" type="text/css" />
-    <link rel="stylesheet" href="../styles/live-order.css" type="text/css" />
+  <!-- App JS -->
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/header.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/dishes.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/live-order.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/confirmation.css" type="text/css" />
+
+  <!-- NOT SURE IF WE NEED jQuery BELOW -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+</head>
+
+<body>
+  <header>
+    <%- include('partials/header.ejs') %>
+  </header>
+  <div class="container">
+    <h1> Thanks for your order</h1>
+    <h3>You'll be munching in no time! We've sent a text confirmation </h3>
+    <!-- EJS variable for phone number goes here -->
+    <div class="jumbotron jumbotron-fluid">
+      <div class="row">
+        <div class="left col-md-6">
+          <p>Delivery</p>
+        </div>
+        <div class="right col-md-6">
+          <p>Delivery Address</p>
+        </div>
+      </div>
+    </div>
+    <h3 class="menu-section" id="section1">Starters</h3>
+
+    <div class="container-fluid dish-container">
+      <div class="row item-container">
+        <div class="col-lg-12 item-info">
+          <span class="item-name">
+            Rice
+          </span>
+          <span class="item-description">
+            Tastes good
+          </span>
+          <span class="item-price">
+            2.00
+          </span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- <div class="individual-item-list">
+    <div class="row">
+        <span class="quantity">1</span>
+        <span class="name">Rice</span>
+        <span class="price">2.00</span>
+      </div>
+      <div class="row">
+        <span class="name">Rice</span>
+        <span class="quantity">1</span>
+        <span class="price">2.00</span>
+      </div>
+      <div class="row">
+        <span class="quantity">1</span>
+        <span class="name">Rice</span>
+        <span class="price">2.00</span>
+      </div>
 
 
-    <!-- NOT SURE IF WE NEED jQuery BELOW -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  </head>
+    </div> -->
+    <div class = "charge-breakdown">
+      <div id = "subtotal">
+        <span>Your Subtotal</span>
+        <span> 32.00</span>
+      </div>
+      <div id = "taxes-and-fees">
+        <span>taxes and fees</span>
+        <span>5.16</span>
+      </div>
+      <div id = "delivery">
+        <span>delivery</span>
+        <span>3.99</span>
+      </div>
+      <div id = "tips">
+        <span>Driver Tip</span>
+        <span>8.00</span>
+      </div>
+      <div id = "totalcharged">
+        <span>Total Charged</span>
+        <span>49.15</span>
+      </div>
+    </div>
 
-  <body>
-    <header>
-      <%- include('partials/header.ejs') %>
-    </header>
-  </body>
+  </div>
+ <button class ="btn "></button>
+</body>
+
 </html>
