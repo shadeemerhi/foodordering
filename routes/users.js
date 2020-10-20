@@ -93,9 +93,9 @@ module.exports = (db) => {
 
   });
 
-  router.get('/confirmed', (req, res) => {
-    console.log('we are in confirmed');
-    res.render('confirmed');
+  router.get('/confirmation', (req, res) => {
+    console.log('we are in confirmation');
+    res.render('confirmation');
   });
   return router;
 };

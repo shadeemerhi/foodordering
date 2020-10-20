@@ -69,8 +69,22 @@ const getOrderMessage = function(orderItems) {
 //     }
 //     if(tableData[index].id !== i) {
 //       orderMap[i+1].push(tableData[index].name);
+//     } else {
+//       orderMap[i] = tableData[index].name
+
 //     }
 //   }
+
+//   let arr = [1,1,1,1,3,3,3,3,3,4];
+//   const unique = (value, index, self) => {
+//     return self.indexOf(value) === index
+//   }
+
+//   const ages = [26, 27, 26, 26, 28, 28, 29, 29, 30]
+//   const uniqueAges = ages.filter(unique)
+
+//   console.log(uniqueAges)
+
 // }
 
 module.exports = { groupItemsByCategory, getOrderTotal, createQueryValues, getOrderMessage };

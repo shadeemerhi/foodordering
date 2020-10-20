@@ -168,7 +168,7 @@ $(document).ready(function() {
         dataType: 'json',
         contentType: 'application/json',
         data
-      }).then(window.location.href = '/users/confirmed')
+      }).then(window.location.href = '/users/confirmation')
     )
     .catch(e => console.log(e));
   });
