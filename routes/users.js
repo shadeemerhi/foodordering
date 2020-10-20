@@ -7,7 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const { groupItemsByCategory } = require('./helpers');
+const { groupItemsByCategory, getOrderTotal, createQueryValues } = require('./helpers');
 
 module.exports = (db) => {
 
@@ -42,8 +42,25 @@ module.exports = (db) => {
     const orderItems = req.body;
     // console.log(JSON.parse(orderItems));
     console.log('items on server:', orderItems);
+    const orderTotal = getOrderTotal(orderItems);
+    let query =
+    `INSERT INTO orders (user_id, total_price)
+    VALUES (${1}, ${orderTotal})
+    RETURNING *;`
 
-    res.send('post reached');
+    return db.query(query)
+    .then(objectNew => {
+      const order_id =  objectNew.rows[0].id;
+      // console.log(order_id);
+      let query2 = createQueryValues(order_id, orderItems);
+      console.log(query2);
+      db.query(query2)
+      .then(() => console.log('orderItems inserted into database'))
+      .catch(e => console.log(e));
+    })
+    .catch(e => console.log(e));
+
+    // res.send('post reached');
 
     // redirect to /confirmation with order data (ideally)
     // res.render('/confirmation', orderData)
