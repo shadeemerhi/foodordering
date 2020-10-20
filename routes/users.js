@@ -73,7 +73,8 @@ module.exports = (db) => {
     const query =
     `SELECT orders.id, dishes.name, orders.total_price FROM orders
       JOIN orderItems ON order_id = orders.id
-      JOIN dishes ON orderItems.dish_id = dishes.id;`;
+      JOIN dishes ON orderItems.dish_id = dishes.id
+      ORDER BY order_id DESC;`;
 
       db.query(query)
       .then(data => {
