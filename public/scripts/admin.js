@@ -19,7 +19,6 @@ $(document).ready(function() {
     const completionTime = {time: inputTime};
     console.log('completionTime :', completionTime);
 
-
     $.ajax({
       url: '/users/admin/confirm',
       type: 'POST',
@@ -33,8 +32,20 @@ $(document).ready(function() {
         dataType: 'json',
         data: completionTime
       }).then(window.location.href = '/users/admin').catch(e => console.log(e))
-
     )
     .catch(e => console.log(e));
+  });
+
+
+  // Adding event listeners to 'Close Order' buttons to change the status to closed
+  $('.confirmed-order-container').on('click', function() {
+    let orderId = $(this).attr('id');
+    const data = {id: orderId};
+    $.ajax({
+      url: '/users/admin/close',
+      type: 'POST',
+      dataType: 'json',
+      data
+    }).then(window.location.href = '/users/admin').catch(e => console.log(e));
   });
 });

@@ -124,6 +124,21 @@ module.exports = (db) => {
 
   });
 
+  router.post('/admin/close', (req, res) => {
+    const data = parseInt(req.body.id);
+    const query = `UPDATE orders SET status = 'closed' WHERE orders.id = ${data};`;
+
+    db.query(query)
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+
+    res.send('order closed');
+
+  });
+
 
   router.get('/confirmation', (req, res) => {
     console.log('we are in confirmation');
