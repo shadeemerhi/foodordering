@@ -84,6 +84,7 @@ const groupItemsByOrder = function(orderData) {
     output[i]['status'] = null;
     output[i]['created_at'] = null;
     output[i]['user_id'] = null;
+    output[i]['pickup_time'] = null;
 
     for (let j = index; j < orderData.length; j++) {
       if(orderData[j].id !== i) {
@@ -97,6 +98,7 @@ const groupItemsByOrder = function(orderData) {
         output[i]['user_id'] = orderData[j].user_id;
         output[i]['status'] = orderData[j].status;
         output[i]['created_at'] = orderData[j].created_at;
+        output[i]['pickup_time'] = orderData[j].time;
       }
     }
   }
