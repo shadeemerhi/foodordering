@@ -1,77 +1,253 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Restaurant | Admin</title>
 
-    <!-- Bootstrap CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<head>
+  <title>Restaurant | Admin</title>
 
-    <!-- Font Awesome -->
-    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/v4-shims.js"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/header.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/admin.css" type="text/css" />
+  <link href=“https://fonts.googleapis.com/css2?family=Commissioner:wght@400;800&display=swap” rel=“stylesheet”>
 
-    <!-- External JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-    <!-- App JS -->
+  <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/v4-shims.js"></script>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="../styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="../styles/header.css" type="text/css" />
-    <link rel="stylesheet" href="../styles/dishes.css" type="text/css" />
-    <link rel="stylesheet" href="../styles/live-order.css" type="text/css" />
-    <link rel="stylesheet" href="../styles/admin.css" type="text/css" />
+  <!-- External JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <!-- App JS -->
 
 
-    <!-- NOT SURE IF WE NEED jQuery BELOW -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  </head>
 
-  <body>
+  <!-- NOT SURE IF WE NEED jQuery BELOW -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+</head>
+<body style="
+    padding: 0 30px;
+    /* min-height: 100vh; */
+">
+  <header>
     <header>
-      <%- include('partials/header.ejs') %>
-    </header>
-    <div class="row">
-      <div class="col-lg-8 all-orders-container">
-        <h3 class="order-section" id="in-progress">Orders</h3>
-        <% for (const order of orders) { %>
-          <article class="order-container">
-            <div class="id-container">
-              <p><%=order.id %></p>
-            </div>
-            <div class="all-items-container">
-              <p class="all-items-title">Items</p>
-              <% for (const item in order.items) { %>
-                <div class="item-container">
-                  <p class="item-quantity"><%=order.quantity[item]%></p>
-                  <p class="item-price"><%=order.items[item]%></p>
-                </div>
-              <% } %>
-            </div>
-              <div class="price-container">
-                <p class="order-total-text">Order Total</p>
-                <div class="total-price-container">
-                  <p class="order-total-price"><%=order['total_price']%></p>
-                </div>
-              </div>
-          </article>
-        <% } %>
-      </div>
-      <div class="col-lg-4">
-        <div id="admin-form-container">
-          <form class="form-inline">
-            <div class="form-group mx-sm-3 mb-2">
-              <label for="inputPassword2" class="sr-only">Password</label>
-              <input type="password" class="form-control" id="inputPassword2" placeholder="Completion Time">
-            </div>
-            <button type="submit" class="btn admin-submit-btn mb-2">Submit</button>
-          </form>
-        </div>
+  <nav class="navbar navbar-expand-md fixed-top">
+    <a class="navbar-brand" href="/order">Restaurant Name</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
+      <form class="form-inline my-2 my-lg-0" style="margin:0.5em;" action="/login" method="GET">
+        <button type="submit" class="btn">
+          <svg class="svg-inline--fa fa-receipt fa-w-12" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="receipt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" data-fa-i2svg=""><path fill="currentColor" d="M358.4 3.2L320 48 265.6 3.2a15.9 15.9 0 0 0-19.2 0L192 48 137.6 3.2a15.9 15.9 0 0 0-19.2 0L64 48 25.6 3.2C15-4.7 0 2.8 0 16v480c0 13.2 15 20.7 25.6 12.8L64 464l54.4 44.8a15.9 15.9 0 0 0 19.2 0L192 464l54.4 44.8a15.9 15.9 0 0 0 19.2 0L320 464l38.4 44.8c10.5 7.9 25.6.4 25.6-12.8V16c0-13.2-15-20.7-25.6-12.8zM320 360c0 4.4-3.6 8-8 8H72c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h240c4.4 0 8 3.6 8 8v16zm0-96c0 4.4-3.6 8-8 8H72c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h240c4.4 0 8 3.6 8 8v16zm0-96c0 4.4-3.6 8-8 8H72c-4.4 0-8-3.6-8-8v-16c0-4.4 3.6-8 8-8h240c4.4 0 8 3.6 8 8v16z"></path></svg><!-- <i class="fas fa-receipt"></i> -->
+        </button>
+      </form>
+      <form class="form-inline my-2 my-lg-0" action="/register" method="GET">
+        <button type="submit" class="btn">Username</button>
+      </form>
+    </div>
+  </nav>
+</header>
+  </header>
+  <div class="row" style="
+    height: 93vh;
+    width: 100%;
+    background: mintcream;
+    padding: 40px 20px 0 20px;
+">
+    <div class="body-container"><h3 class="order-section" id="in-progress">Orders</h3>
+    <div class="order-container" style="
+    display: flex;
+    flex-direction: row-reverse;
+">
+        <div class="col-lg-2">
+      <div id="admin-form-container" style="
+    margin-top: 0px;
+">
+        <form class ="completion-time">
+          <div class="form-group mb-2">
+            <label for="inputPassword2" class="sr-only">Password</label>
+            <input type="password" class="form-control" id="inputPassword2" placeholder="Completion Time">
+          </div>
+          <button type="submit" class="btn admin-submit-btn mb-2 rounded">Submit</button>
+        </form>
       </div>
     </div>
-  </body>
+      <div class="col-lg-10 all-orders-container">
+        <article class="order-container rounded">
+          <div class="id-container">
+            <p class="order-number-title">Order Number :</p>
+            <p>3</p>
+          </div>
+          <div class="all-items-container">
+            <p class="all-items-title">Items</p>
+            <div class="item-container">
+              <p class="item-quantity">1</p>
+              <p class="item-price">Ice Cream</p>
+            </div>
+            <div class="item-container">
+              <p class="item-quantity">1</p>
+              <p class="item-price">Ice Cream</p>
+            </div>
+            <div class="item-container">
+              <p class="item-quantity">1</p>
+              <p class="item-price">Pie</p>
+            </div>
+            <div class="item-container">
+              <p class="item-quantity">1</p>
+              <p class="item-price">Pizza</p>
+            </div>
+            <div class="item-container">
+              <p class="item-quantity">1</p>
+              <p class="item-price">Hamburger</p>
+            </div>
+            <div class="item-container">
+              <p class="item-quantity">1</p>
+              <p class="item-price">Cake</p>
+            </div>
+            <div class="item-container">
+              <p class="item-quantity">1</p>
+              <p class="item-price">Pie</p>
+            </div>
+          </div>
+          <div class="price-container">
+            <p class="order-total-text">Order Total</p>
+            <div class="total-price-container">
+              <p class="order-total-price">7</p>
+            </div>
+          </div>
+        </article>
+        <article class="order-container rounded">
+          <div class="id-container">
+            <p class="order-number-title">Order Number :</p>
+            <p>2</p>
+          </div>
+          <div class="all-items-container">
+            <p class="all-items-title">Items</p>
+            <div class="item-container">
+              <p class="item-quantity">1</p>
+              <p class="item-price">Steak</p>
+            </div>
+            <div class="item-container">
+              <p class="item-quantity">1</p>
+              <p class="item-price">Pizza</p>
+            </div>
+            <div class="item-container">
+              <p class="item-quantity">1</p>
+              <p class="item-price">Pie</p>
+            </div>
+            <div class="item-container">
+              <p class="item-quantity">1</p>
+              <p class="item-price">Cake</p>
+            </div>
+            <div class="item-container">
+              <p class="item-quantity">1</p>
+              <p class="item-price">Ice Cream</p>
+            </div>
+          </div>
+          <div class="price-container">
+            <p class="order-total-text">Order Total</p>
+            <div class="total-price-container">
+              <p class="order-total-price">11</p>
+            </div>
+          </div>
+        </article>
+        <article class="order-container rounded">
+          <div class="id-container">
+            <p class="order-number-title">Order Number :</p>
+            <p>1</p>
+          </div>
+          <div class="all-items-container">
+            <p class="all-items-title">Items</p>
+            <div class="item-container">
+              <p class="item-quantity">1</p>
+              <p class="item-price">Steak</p>
+            </div>
+            <div class="item-container">
+              <p class="item-quantity">1</p>
+              <p class="item-price">Pizza</p>
+            </div>
+            <div class="item-container">
+              <p class="item-quantity">1</p>
+              <p class="item-price">Hamburger</p>
+            </div>
+            <div class="item-container">
+              <p class="item-quantity">1</p>
+              <p class="item-price">Calamari</p>
+            </div>
+            <div class="item-container">
+              <p class="item-quantity">1</p>
+              <p class="item-price">Poke Bowl</p>
+            </div>
+            <div class="item-container">
+              <p class="item-quantity">1</p>
+              <p class="item-price">Soup</p>
+            </div>
+          </div>
+          <div class="price-container">
+            <p class="order-total-text">Order Total</p>
+            <div class="total-price-container">
+              <p class="order-total-price">9</p>
+            </div>
+          </div>
+        </article>
+        </div>
+        </div>
+    </div>
+  </div>
+</body>
+<!-- <body>
+  <header>
+    <%- include('partials/header.ejs') %>
+  </header>
+  <div class="row">
+    <div class = "body-container">
+      <div class="col-lg-10 all-orders-container">
+        <h3 class="order-section" id="in-progress">Orders</h3>
+        <% for (const order of orders) { %>
+        <article class="order-container rounded">
+          <div class="id-container">
+            <p class="order-number-title">Order Number :</p>
+            <p><%=order.id %></p>
+          </div>
+          <div class="all-items-container">
+            <p class="all-items-title">Items</p>
+            <% for (const item in order.items) { %>
+            <div class="item-container">
+              <p class="item-quantity"><%=order.quantity[item]%></p>
+              <p class="item-price"><%=order.items[item]%></p>
+            </div>
+            <% } %>
+          </div>
+          <div class="price-container">
+            <p class="order-total-text">Order Total</p>
+            <div class="total-price-container">
+              <p class="order-total-price"><%=order['total_price']%></p>
+            </div>
+          </div>
+        </article>
+        <% } %>
+        </div>
+    </div>
+    <div class="col-lg-2">
+      <div id="admin-form-container">
+        <form class="form-inline">
+          <div class="form-group mx-sm-3 mb-2">
+            <label for="inputPassword2" class="sr-only">Password</label>
+            <input type="password" class="form-control" id="inputPassword2" placeholder="Completion Time">
+          </div>
+          <button type="submit" class="btn admin-submit-btn mb-2 rounded">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body> -->
+
 </html>
