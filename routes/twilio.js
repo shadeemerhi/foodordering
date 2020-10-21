@@ -24,25 +24,26 @@ module.exports = () => {
       to: '+14036305730'
     }).then(message => {
       console.log(message.sid);
-      console.log('This worked hahaha');
     });
 
     res.send('we are in twilio');
 
   });
 
-  router.post("/admin/response", (req, res) => {
+  router.post("/admin", (req, res) => {
+
+    console.log('we are in the twilio second endpoint');
+    const pickupTime = req.body.time;
 
     client.messages.create({
 
-      body: `Your order will take this many minutes: $${data.total}`,
+      body: `Your order will be ready for pickup in ${pickupTime}.`,
       from: '+15712003029',
-      to: '+14036305730'
+      to: '+14039753519'
     }).then(message => {
       console.log(message.sid);
       console.log('This worked hahaha');
     });
-
     res.send('we are in twilio');
 
   });

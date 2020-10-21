@@ -82,7 +82,7 @@ module.exports = (db) => {
         const orderDetails = data.rows;
         let orders = groupItemsByOrder(orderDetails);
         const filteredOrders = groupOrdersByStatus(orders);
-        console.log('details for page', filteredOrders);
+        // console.log('details for page', filteredOrders);
         templateVars = {
           newOrders: filteredOrders[0],
           confirmedOrders: filteredOrders[1],
@@ -99,9 +99,22 @@ module.exports = (db) => {
   });
 
   router.post('/admin/confirm', (req, res) => {
+    const data = parseInt(req.body.id);
+    console.log(data);
     console.log('post is working');
-    res.redirect('/users/admin');
+
+    const query = `UPDATE orders SET status = 'confirmed' WHERE orders.id = ${data};`;
+
+    return db.query(query)
+    // .then(res.redirect('/users/admin'))
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+
   });
+
 
   router.get('/confirmation', (req, res) => {
     console.log('we are in confirmation');
