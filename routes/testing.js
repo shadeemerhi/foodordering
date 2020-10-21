@@ -29,6 +29,8 @@ const groupItemsByOrder = function(orderData) {
     output[i]['total_price'] = null;
     output[i]['status'] = null;
     output[i]['created_at'] = null;
+    output[i]['user_id'] = null;
+
 
     for (let j = index; j < orderData.length; j++) {
       if(orderData[j].id !== i) {
@@ -39,6 +41,7 @@ const groupItemsByOrder = function(orderData) {
         output[i]['quantity'].push(orderData[j].quantity);
         output[i]['item_price'].push(orderData[j].item_price);
         output[i]['total_price'] = orderData[j].total_price;
+        output[i]['user_id'] = orderData[j].user_id;
         output[i]['status'] = orderData[j].status;
         output[i]['created_at'] = orderData[j].created_at;
       }
@@ -47,13 +50,13 @@ const groupItemsByOrder = function(orderData) {
   return output;
 }
 
-SELECT dishes.name, orderItem.quantity, dishes.price
+// SELECT dishes.name, orderItem.quantity, dishes.price
 
-SELECT orders.id, dishes.name, dishes.price, orderItems.quantity, orders.total_price, orders.created_at, status FROM orders
-      JOIN orderItems ON order_id = orders.id
-      JOIN dishes ON orderItems.dish_id = dishes.id
-      WHERE order.user_id = 1
-      ORDER BY created_at DESC;
+// SELECT orders.id, users.id AS user_id, dishes.name, dishes.price, orderItems.quantity, orders.total_price, orders.created_at, status FROM orders
+//         JOIN orderItems ON order_id = orders.id
+//         JOIN dishes ON orderItems.dish_id = dishes.id
+//         JOIN users ON orders.user_id = users.id
+//         ORDER BY order_id;
 
 const orderData = [  { id: 1, name: 'Soup', quantity: 1, total_price: 21, status: true },
   {
