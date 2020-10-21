@@ -19,6 +19,11 @@ $main-color: #FDA50F;
 
   #your-order {
     border-bottom: 1px solid $main-color;
+
+    p{
+      padding-top:15px;
+    }
+
   }
 
 }
@@ -30,7 +35,7 @@ $main-color: #FDA50F;
   justify-content: flex-end;
   width: 30%;
   margin-left: 2rem;
-
+  padding-right: 50px;
   #total-price-container {
     display: flex;
     flex-direction: row;

@@ -49,6 +49,12 @@
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-image: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"); background-repeat:no-repeat;background-position: center 45px bottom;
+    }
+    </style>
+
 </head>
 
 <body>
@@ -56,8 +62,9 @@
     <%- include('partials/header.ejs') %>
   </header>
   <br>
-  <section class="container-fluid main-container text-center">
+  <section class="container-fluid main-container text-center" id="everything-below-restaurant">
     <div class="row">
+      <!-- <img src ="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" id = "under-image"> -->
       <div class="col-lg-8 menu-container">
         <h3 class="menu-section" id="section1">Starters</h3>
         <% for (const dish in apps) { %>
