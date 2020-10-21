@@ -52,11 +52,11 @@ const groupItemsByOrder = function(orderData) {
 
 // SELECT dishes.name, orderItem.quantity, dishes.price
 
-// SELECT orders.id, users.id AS user_id, dishes.name, dishes.price, orderItems.quantity, orders.total_price, orders.created_at, status FROM orders
-//         JOIN orderItems ON order_id = orders.id
-//         JOIN dishes ON orderItems.dish_id = dishes.id
-//         JOIN users ON orders.user_id = users.id
-//         ORDER BY order_id;
+// SELECT orders.id, users.id AS user_id, dishes.name, dishes.price, orderItems.quantity, dishes.id AS dish_id, orders.total_price, orders.created_at, orders.time, status FROM orders
+// JOIN orderItems ON order_id = orders.id
+// JOIN dishes ON orderItems.dish_id = dishes.id
+// JOIN users ON orders.user_id = users.id
+// ORDER BY order_id;
 
 const orderData = [  { id: 1, name: 'Soup', quantity: 1, total_price: 21, status: true },
   {

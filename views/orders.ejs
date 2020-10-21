@@ -95,9 +95,10 @@
               <div class="all-items-container">
                 <p class="all-items-title">Items</p>
                 <% for (const item in order.items) { %>
-                <div class="item-container">
+                <div class="item-container" value=<%=order['dish_id'][item]%>>
                   <p class="item-quantity"><%=order.quantity[item]%></p>
-                  <p class="item-price"><%=order.items[item]%></p>
+                  <p class="item-name"><%=order.items[item]%></p>
+                  <p class="item-cost">$<%=order['item_price'][item]%> Each</p>
                 </div>
                 <% } %>
               </div>
@@ -107,6 +108,9 @@
                   <p class="order-total-price"><%=order['total_price']%></p>
                 </div>
               </div>
+              <div class="btn-container">
+                <button type="button" class="btn close-order-btn">Re-order</button>
+                </div>
             </article>
           <% } %>
         </div>
