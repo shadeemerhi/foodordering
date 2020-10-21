@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Restaurant | Admin</title>
+  <title>Restaurant | Orders</title>
 
   <!-- CSS -->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
@@ -63,29 +63,31 @@
               </article>
             <% } %>
            <% } %>
-          <h3 class="order-section" id="confirmed-orders">Confirmed Orders</h3>
-          <% for (const order of confirmedOrders) { %>
-            <article class="order-container rounded" id=<%=order.id%>>
-              <div class="all-items-container">
-                <p class="all-items-title">Items</p>
-                <% for (const item in order.items) { %>
-                <div class="item-container">
-                  <p class="item-quantity"><%=order.quantity[item]%></p>
-                  <p class="item-price"><%=order.items[item]%></p>
+           <% if (confirmedOrders.length !== 0) { %>
+            <h3 class="order-section" id="confirmed-orders">Confirmed Orders</h3>
+            <% for (const order of confirmedOrders) { %>
+              <article class="order-container rounded" id=<%=order.id%>>
+                <div class="all-items-container">
+                  <p class="all-items-title">Items</p>
+                  <% for (const item in order.items) { %>
+                  <div class="item-container">
+                    <p class="item-quantity"><%=order.quantity[item]%></p>
+                    <p class="item-price"><%=order.items[item]%></p>
+                  </div>
+                  <% } %>
                 </div>
-                <% } %>
-              </div>
-              <div class="price-container">
-                <p class="order-total-text">Order Total</p>
-                <div class="total-price-container">
-                  <p class="order-total-price"><%=order['total_price']%></p>
+                <div class="price-container">
+                  <p class="order-total-text">Order Total</p>
+                  <div class="total-price-container">
+                    <p class="order-total-price"><%=order['total_price']%></p>
+                  </div>
                 </div>
-              </div>
-              <div class="status-container">
-                <p class="pickup-title">Pickup Time</p>
-                <p><%=order['pickup_time']%> Minutes</p>
-              </div>
-            </article>
+                <div class="status-container">
+                  <p class="pickup-title">Pickup Time</p>
+                  <p><%=order['pickup_time']%> Minutes</p>
+                </div>
+              </article>
+            <% } %>
           <% } %>
           <h3 class="order-section" id="closed-orders">Order History</h3>
           <% for (const order of closedOrders) { %>
