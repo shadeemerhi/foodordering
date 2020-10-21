@@ -72,9 +72,9 @@ module.exports = (db) => {
 
     const query =
       `SELECT orders.id, dishes.name, dishes.price, orderItems.quantity, orders.total_price, orders.created_at, status FROM orders
-      JOIN orderItems ON order_id = orders.id
-      JOIN dishes ON orderItems.dish_id = dishes.id
-      ORDER BY order_id;`;
+        JOIN orderItems ON order_id = orders.id
+        JOIN dishes ON orderItems.dish_id = dishes.id
+        ORDER BY order_id;`;
 
       db.query(query)
       .then(data => {
@@ -97,18 +97,33 @@ module.exports = (db) => {
   router.get('/confirmation', (req, res) => {
     console.log('we are in confirmation');
 
-    const order = { id: 9,
-      items: [ 'Ice Cream', 'Pizza', 'Steak', 'Hamburger' ],
-      quantity: [ 1, 4, 1, 1 ],
-      item_price: [ 1, 5, 5, 5 ],
-      total_price: 31,
-      status: true};
+    const query = `
+      SELECT orders.id, dishes.name, dishes.price, orderItems.quantity, orders.total_price, orders.created_at, status FROM orders
+        JOIN orderItems ON order_id = orders.id
+        JOIN dishes ON orderItems.dish_id = dishes.id
+        WHERE orders.user_id = 1
+        ORDER BY created_at DESC;`;
 
-    templateVars = {
-      order
-    }
 
-    res.render('confirmation', templateVars);
+    db.query(query)
+    .then(data => {
+      let orderData = data.rows;
+      orderData = groupItemsByOrder(orderData);
+      const order = orderData[0];
+
+      console.log(order);
+
+      templateVars = {
+        order
+      }
+      res.render('confirmation', templateVars);
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+
   });
   return router;
 };

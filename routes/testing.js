@@ -52,7 +52,8 @@ SELECT dishes.name, orderItem.quantity, dishes.price
 SELECT orders.id, dishes.name, dishes.price, orderItems.quantity, orders.total_price, orders.created_at, status FROM orders
       JOIN orderItems ON order_id = orders.id
       JOIN dishes ON orderItems.dish_id = dishes.id
-      ORDER BY order_id;
+      WHERE order.user_id = 1
+      ORDER BY created_at DESC;
 
 const orderData = [  { id: 1, name: 'Soup', quantity: 1, total_price: 21, status: true },
   {
