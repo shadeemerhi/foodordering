@@ -71,7 +71,7 @@ module.exports = (db) => {
   router.get('/admin', (req, res) => {
 
     const query =
-      `SELECT orders.id, users.id AS user_id, dishes.name, dishes.price, orderItems.quantity, orders.total_price, orders.created_at, status FROM orders
+      `SELECT orders.id, users.id AS user_id, dishes.name, dishes.price, orderItems.quantity, orders.total_price, orders.created_at, orders.time, status FROM orders
         JOIN orderItems ON order_id = orders.id
         JOIN dishes ON orderItems.dish_id = dishes.id
         JOIN users ON orders.user_id = users.id
@@ -82,7 +82,7 @@ module.exports = (db) => {
         const orderDetails = data.rows;
         let orders = groupItemsByOrder(orderDetails);
         const filteredOrders = groupOrdersByStatus(orders);
-        // console.log('details for page', filteredOrders);
+        console.log('details for page', filteredOrders);
         templateVars = {
           newOrders: filteredOrders[0],
           confirmedOrders: filteredOrders[1],
@@ -100,13 +100,22 @@ module.exports = (db) => {
 
   router.post('/admin/confirm', (req, res) => {
     const data = parseInt(req.body.id);
+    const pickupTime = req.body.time;
     console.log(data);
     console.log('post is working');
 
-    const query = `UPDATE orders SET status = 'confirmed' WHERE orders.id = ${data};`;
+    const query1 = `UPDATE orders SET status = 'confirmed' WHERE orders.id = ${data};`;
+    const query2 = `UPDATE orders SET time = '${pickupTime}' WHERE orders.id = ${data}`;
 
-    return db.query(query)
-    // .then(res.redirect('/users/admin'))
+    db.query(query1)
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+
+    // Updating the pickup time to time specified by restaurant
+    db.query(query2)
     .catch(err => {
       res
         .status(500)
@@ -147,5 +156,37 @@ module.exports = (db) => {
     });
 
   });
+
+  router.get('/orders', (req, res) => {
+
+    const query = `
+        SELECT orders.id, users.id AS user_id, dishes.name, dishes.price, orderItems.quantity, orders.total_price, orders.created_at, orders.time, status FROM orders
+        JOIN orderItems ON order_id = orders.id
+        JOIN dishes ON orderItems.dish_id = dishes.id
+        JOIN users ON orders.user_id = users.id
+        ORDER BY order_id;`
+
+    db.query(query)
+    .then(data => {
+      const orderDetails = data.rows;
+      let orders = groupItemsByOrder(orderDetails);
+      const filteredOrders = groupOrdersByStatus(orders);
+      console.log('details for orders page', filteredOrders);
+      templateVars = {
+        newOrders: filteredOrders[0],
+        confirmedOrders: filteredOrders[1],
+        closedOrders: filteredOrders[2]
+      };
+      res.render('orders', templateVars);
+
+    })
+
+
+    // We want to send all order data for this user (user_id = 1)
+  });
+
+
+
+
   return router;
 };
