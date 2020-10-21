@@ -36,36 +36,98 @@
     </header>
       <div class="main-container">
         <div class="all-orders-container">
-          <h3 class="order-section" id="in-progress">New Orders</h3>
-          <% for (const order of orders) { %>
-          <article class="order-container rounded" id=<%=order.id%>>
-            <div class="id-container">
-              <p class="order-number-title">Order Number :</p>
-              <p><%=order.id %></p>
-            </div>
-            <div class="user-id-container">
-              <p class="order-number-title">User ID:</p>
-              <p><%=order['user_id']%></p>
-            </div>
-            <div class="all-items-container">
-              <p class="all-items-title">Items</p>
-              <% for (const item in order.items) { %>
-              <div class="item-container">
-                <p class="item-quantity"><%=order.quantity[item]%></p>
-                <p class="item-price"><%=order.items[item]%></p>
+          <h3 class="order-section" id="new-orders">New Orders</h3>
+          <% for (const order of newOrders) { %>
+            <article class="order-container rounded" id=<%=order.id%>>
+              <div class="id-container">
+                <p class="order-number-title">Order Number :</p>
+                <p><%=order.id %></p>
               </div>
-              <% } %>
-            </div>
-            <div class="price-container">
-              <p class="order-total-text">Order Total</p>
-              <div class="total-price-container">
-                <p class="order-total-price"><%=order['total_price']%></p>
+              <div class="user-id-container">
+                <p class="order-number-title">User ID:</p>
+                <p><%=order['user_id']%></p>
               </div>
-            </div>
-            <div class="btn-container">
-            <button type="button" class="btn close-order-btn">Close Order</button>
-            </div>
-          </article>
+              <div class="all-items-container">
+                <p class="all-items-title">Items</p>
+                <% for (const item in order.items) { %>
+                <div class="item-container">
+                  <p class="item-quantity"><%=order.quantity[item]%></p>
+                  <p class="item-price"><%=order.items[item]%></p>
+                </div>
+                <% } %>
+              </div>
+              <div class="price-container">
+                <p class="order-total-text">Order Total</p>
+                <div class="total-price-container">
+                  <p class="order-total-price"><%=order['total_price']%></p>
+                </div>
+              </div>
+              <div class="btn-container">
+              <button type="button" class="btn close-order-btn">Close Order</button>
+              </div>
+            </article>
+          <% } %>
+          <h3 class="order-section" id="confirmed-orders">Confirmed Orders</h3>
+          <% for (const order of confirmedOrders) { %>
+            <article class="order-container rounded" id=<%=order.id%>>
+              <div class="id-container">
+                <p class="order-number-title">Order Number :</p>
+                <p><%=order.id %></p>
+              </div>
+              <div class="user-id-container">
+                <p class="order-number-title">User ID:</p>
+                <p><%=order['user_id']%></p>
+              </div>
+              <div class="all-items-container">
+                <p class="all-items-title">Items</p>
+                <% for (const item in order.items) { %>
+                <div class="item-container">
+                  <p class="item-quantity"><%=order.quantity[item]%></p>
+                  <p class="item-price"><%=order.items[item]%></p>
+                </div>
+                <% } %>
+              </div>
+              <div class="price-container">
+                <p class="order-total-text">Order Total</p>
+                <div class="total-price-container">
+                  <p class="order-total-price"><%=order['total_price']%></p>
+                </div>
+              </div>
+              <div class="btn-container">
+              <button type="button" class="btn close-order-btn">Close Order</button>
+              </div>
+            </article>
+          <% } %>
+          <h3 class="order-section" id="closed-orders">Closed Orders</h3>
+          <% for (const order of closedOrders) { %>
+            <article class="order-container rounded" id=<%=order.id%>>
+              <div class="id-container">
+                <p class="order-number-title">Order Number :</p>
+                <p><%=order.id %></p>
+              </div>
+              <div class="user-id-container">
+                <p class="order-number-title">User ID:</p>
+                <p><%=order['user_id']%></p>
+              </div>
+              <div class="all-items-container">
+                <p class="all-items-title">Items</p>
+                <% for (const item in order.items) { %>
+                <div class="item-container">
+                  <p class="item-quantity"><%=order.quantity[item]%></p>
+                  <p class="item-price"><%=order.items[item]%></p>
+                </div>
+                <% } %>
+              </div>
+              <div class="price-container">
+                <p class="order-total-text">Order Total</p>
+                <div class="total-price-container">
+                  <p class="order-total-price"><%=order['total_price']%></p>
+                </div>
+              </div>
+              <div class="btn-container">
+              <button type="button" class="btn close-order-btn">Close Order</button>
+              </div>
+            </article>
           <% } %>
         </div>
         <div class="button-container">

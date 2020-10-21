@@ -103,4 +103,22 @@ const groupItemsByOrder = function(orderData) {
   return output.slice(1).reverse();
 }
 
-module.exports = { groupItemsByCategory, getOrderTotal, createQueryValues, getOrderMessage, groupItemsByOrder };
+const groupOrdersByStatus = function(orders) {
+  let newOrders = [];
+  let confirmedOrders = [];
+  let closedOrders = [];
+
+  for (const order of orders) {
+    if (order.status === 'new') {
+      newOrders.push(order);
+    } else if (order.status === 'confirmed') {
+      confirmedOrders.push(order);
+    } else {
+      closedOrders.push(order);
+    }
+  }
+
+  return [newOrders, confirmedOrders, closedOrders];
+}
+
+module.exports = { groupItemsByCategory, getOrderTotal, createQueryValues, getOrderMessage, groupItemsByOrder, groupOrdersByStatus };

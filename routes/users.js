@@ -7,7 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const { groupItemsByCategory, getOrderTotal, createQueryValues, groupItemsByOrder } = require('./helpers');
+const { groupItemsByCategory, getOrderTotal, createQueryValues, groupItemsByOrder, groupOrdersByStatus } = require('./helpers');
 
 module.exports = (db) => {
 
@@ -80,10 +80,13 @@ module.exports = (db) => {
       db.query(query)
       .then(data => {
         const orderDetails = data.rows;
-        const orders = groupItemsByOrder(orderDetails);
-        console.log('details for page', orders);
+        let orders = groupItemsByOrder(orderDetails);
+        const filteredOrders = groupOrdersByStatus(orders);
+        console.log('details for page', filteredOrders);
         templateVars = {
-          orders
+          newOrders: filteredOrders[0],
+          confirmedOrders: filteredOrders[1],
+          closedOrders: filteredOrders[2]
         };
         res.render('admin', templateVars);
       })
