@@ -98,6 +98,11 @@ module.exports = (db) => {
 
   });
 
+  router.post('/admin/confirm', (req, res) => {
+    console.log('post is working');
+    res.redirect('/users/admin');
+  });
+
   router.get('/confirmation', (req, res) => {
     console.log('we are in confirmation');
 

@@ -4,7 +4,7 @@ $border-color: #bbbbbb;
 #admin-form-container {
   margin-top: 3rem;
 
-  .admin-submit-btn {
+  #admin-submit-btn {
     background-color: $main-color;
     color: white;
   }
@@ -27,6 +27,13 @@ $border-color: #bbbbbb;
   .order-section {
     border-bottom: 1px solid $main-color;
     margin: 1rem;
+  }
+
+  .button-container {
+  }
+
+  .admin-form-container {
+    display: flex;
   }
 }
 

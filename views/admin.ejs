@@ -21,7 +21,7 @@
 
   <!-- External JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+  <script type="text/javascript" src="/scripts/admin.js" async></script>
   <!-- App JS -->
 
 
@@ -38,7 +38,7 @@
         <div class="all-orders-container">
           <h3 class="order-section" id="new-orders">New Orders</h3>
           <% for (const order of newOrders) { %>
-            <article class="order-container rounded" id=<%=order.id%>>
+            <article class="order-container new-order rounded" id=<%=order.id%>>
               <div class="id-container">
                 <p class="order-number-title">Order Number :</p>
                 <p><%=order.id %></p>
@@ -61,9 +61,6 @@
                 <div class="total-price-container">
                   <p class="order-total-price"><%=order['total_price']%></p>
                 </div>
-              </div>
-              <div class="btn-container">
-              <button type="button" class="btn close-order-btn">Close Order</button>
               </div>
             </article>
           <% } %>
@@ -124,21 +121,16 @@
                   <p class="order-total-price"><%=order['total_price']%></p>
                 </div>
               </div>
-              <div class="btn-container">
-              <button type="button" class="btn close-order-btn">Close Order</button>
-              </div>
             </article>
           <% } %>
         </div>
         <div class="button-container">
           <div id="admin-form-container">
-            <form class="form-inline">
-              <div class="form-group mx-sm-3 mb-2">
-                <label for="inputPassword2" class="sr-only">Password</label>
-                <input type="password" class="form-control" id="inputPassword2" placeholder="Completion Time">
-              </div>
-              <button type="submit" class="btn admin-submit-btn mb-2 rounded">Submit</button>
-            </form>
+            <div class="form-group mx-sm-3 mb-2">
+              <label for="time-input">Estimated Pickup Time</label>
+              <input type="number" class="form-control" id="time-input" value="1" placeholder="Completion Time" min="1" max="200">
+            </div>
+            <button type="submit" class="btn mb-2 rounded" id="admin-submit-btn">Submit</button>
           </div>
         </div>
       </div>
