@@ -110,7 +110,7 @@
                 <div class="item-container" value=<%=order['dish_id'][item]%>>
                   <p class="item-quantity"><%=order.quantity[item]%></p>
                   <p class="item-name"><%=order.items[item]%></p>
-                  <p class="item-cost">$<%=order['item_price'][item]%> Each</p>
+                  <p class="item-cost">$<%=(Math.round(order['item_price'][item]*100)/100).toFixed(2)%> each</p>
                 </div>
                 <% } %>
               </div>
@@ -141,7 +141,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn" id="final-submit-btn">Place Order</button>
+                <button type="button" class="btn " id="reorder-submit-btn">Place Order</button>
               </div>
             </div>
           </div>
