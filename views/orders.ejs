@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Restaurant | Admin</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/header.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/admin.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/orders.css" type="text/css" />
+  <link href=“https://fonts.googleapis.com/css2?family=Commissioner:wght@400;800&display=swap” rel=“stylesheet”>
+
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/v4-shims.js"></script>
+
+  <!-- External JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/scripts/admin.js" async></script>
+  <!-- App JS -->
+
+
+
+  <!-- NOT SURE IF WE NEED jQuery BELOW -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+</head>
+  <body>
+    <header>
+      <%- include('partials/header.ejs') %>
+    </header>
+      <div class="main-container">
+        <div class="all-orders-container">
+          <% if (newOrders.length !== 0) {%>
+            <h3 class="order-section" id="new-orders">New Orders</h3>
+            <% for (const order of newOrders) { %>
+              <article class="order-container new-order rounded" id=<%=order.id%>>
+                <div class="all-items-container">
+                  <p class="all-items-title">Items</p>
+                  <% for (const item in order.items) { %>
+                  <div class="item-container">
+                    <p class="item-quantity"><%=order.quantity[item]%></p>
+                    <p class="item-price"><%=order.items[item]%></p>
+                  </div>
+                  <% } %>
+                </div>
+                <div class="price-container">
+                  <p class="order-total-text">Order Total</p>
+                  <div class="total-price-container">
+                    <p class="order-total-price"><%=order['total_price']%></p>
+                  </div>
+                </div>
+                <div class="status-container">
+                  <p class="pickup-title">Pickup Time</p>
+                  <p><%=order['pickup_time']%></p>
+                </div>
+              </article>
+            <% } %>
+           <% } %>
+          <h3 class="order-section" id="confirmed-orders">Confirmed Orders</h3>
+          <% for (const order of confirmedOrders) { %>
+            <article class="order-container rounded" id=<%=order.id%>>
+              <div class="all-items-container">
+                <p class="all-items-title">Items</p>
+                <% for (const item in order.items) { %>
+                <div class="item-container">
+                  <p class="item-quantity"><%=order.quantity[item]%></p>
+                  <p class="item-price"><%=order.items[item]%></p>
+                </div>
+                <% } %>
+              </div>
+              <div class="price-container">
+                <p class="order-total-text">Order Total</p>
+                <div class="total-price-container">
+                  <p class="order-total-price"><%=order['total_price']%></p>
+                </div>
+              </div>
+              <div class="status-container">
+                <p class="pickup-title">Pickup Time</p>
+                <p><%=order['pickup_time']%> Minutes</p>
+              </div>
+            </article>
+          <% } %>
+          <h3 class="order-section" id="closed-orders">Order History</h3>
+          <% for (const order of closedOrders) { %>
+            <article class="order-container rounded" id=<%=order.id%>>
+              <div class="all-items-container">
+                <p class="all-items-title">Items</p>
+                <% for (const item in order.items) { %>
+                <div class="item-container">
+                  <p class="item-quantity"><%=order.quantity[item]%></p>
+                  <p class="item-price"><%=order.items[item]%></p>
+                </div>
+                <% } %>
+              </div>
+              <div class="price-container">
+                <p class="order-total-text">Order Total</p>
+                <div class="total-price-container">
+                  <p class="order-total-price"><%=order['total_price']%></p>
+                </div>
+              </div>
+            </article>
+          <% } %>
+        </div>
+      </div>
+  </body>
+</html>
