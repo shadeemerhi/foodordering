@@ -1,0 +1,12 @@
+$main-color: #FDA50F;
+$border-color: #bbbbbb;
+
+.reorder-btn {
+  background-color: $main-color !important;
+  color: white !important;
+
+  &:hover {
+    box-shadow: 0px 2px 10px #bbbbbb;
+    color: white !important;
+  }
+}
