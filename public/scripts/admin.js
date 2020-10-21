@@ -15,8 +15,7 @@ $(document).ready(function() {
   $('#admin-submit-btn').on('click', function() {
     let orderId = $(this).parent().parent().parent().find('.new-order')[0].id;
     let inputTime = $(this).parent().find('#time-input')[0].attributes.value.nodeValue;
-    // console.log('order id', orderId);
-    const data = {id: orderId};
+    const data = {id: orderId, time: inputTime};
     const completionTime = {time: inputTime};
     console.log('completionTime :', completionTime);
 
