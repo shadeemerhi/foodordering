@@ -43,6 +43,10 @@
               <p class="order-number-title">Order Number :</p>
               <p><%=order.id %></p>
             </div>
+            <div class="user-id-container">
+              <p class="order-number-title">User ID:</p>
+              <p><%=order['user_id']%></p>
+            </div>
             <div class="all-items-container">
               <p class="all-items-title">Items</p>
               <% for (const item in order.items) { %>
@@ -59,7 +63,7 @@
               </div>
             </div>
             <div class="btn-container">
-            <button type="button" class="btn btn-primary">Primary</button>
+            <button type="button" class="btn close-order-btn">Close Order</button>
             </div>
           </article>
           <% } %>
@@ -71,7 +75,7 @@
                 <label for="inputPassword2" class="sr-only">Password</label>
                 <input type="password" class="form-control" id="inputPassword2" placeholder="Completion Time">
               </div>
-              <button type="submit" class="btn admin-submit-btn mb-2 rounded">Close Order</button>
+              <button type="submit" class="btn admin-submit-btn mb-2 rounded">Submit</button>
             </form>
           </div>
         </div>
