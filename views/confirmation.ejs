@@ -4,16 +4,17 @@
 <head>
   <title>Restaurant | Confirmed</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="../styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="../styles/header.css" type="text/css" />
-    <link rel="stylesheet" href="../styles/confirmation.css" type="text/css" />
-
   <!-- Bootstrap CDN -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!-- CSS -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/header.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/confirmation.css" type="text/css" />
+
 
   <!-- Font Awesome -->
   <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
@@ -35,24 +36,26 @@
   <header>
     <%- include('partials/header.ejs') %>
   </header>
-  <div class="container all-container">
-    <h1> Thanks for your order!</h1>
-    <h4>You'll be munching in no time! We've sent you a text confirmation.</h4>
-    <!-- EJS variable for phone number goes here -->
-    <div class="jumbotron jumbotron-fluid">
-      <div class="row">
-        <div class="left col-md-6">
-          <p>Delivery</p>
+   <div class="everything-middle">
+    <div class="container all-container">
+      <h1> Thanks for your order!</h1>
+      <h4>You'll be munching in no time! We've sent you a text confirmation.</h4>
+      <!-- EJS variable for phone number goes here -->
+      <div class="jumbotron jumbotron-fluid">
+
+        <div class="delivery-time">
+          <p id="eta">Delivery Time<br>Shadee, Put the estimated time here!</p>
         </div>
-        <div class="right col-md-6">
-          <p>Delivery Address</p>
-        </div>
+          <div class="delivery-address">
+            <p id="mailing-address">Delivery Address<br>Shadee, an address here please!</p>
+          </div>
       </div>
+
     </div>
 
-    <div class="container-fluid">
-      <div id="order-details-container">
-        <% for (let i = 0; i < order.items.length; i++) { %>
+      <div class="container-fluid">
+        <div id="order-details-container">
+          <% for (let i = 0; i < order.items.length; i++) { %>
           <div class="item-container">
             <div class="item-name-container">
               <p class="item-quantity"><%=order.quantity[i]%></p>
@@ -60,26 +63,31 @@
             </div>
             <p>$<%=(Math.round(order['item_price'][i]*order.quantity[i]*100)/100).toFixed(2)%></p>
           </div>
-        <% } %>
+          <% } %>
+        </div>
+        <div class="charge-breakdown">
+          <div id="subtotal">
+            <span>Your Subtotal</span>
+            <span> <%= order.total_price%></span>
+          </div>
+          <div id="tax">
+            <span>taxes and fees</span>
+            <span><%= (order.total_price * .12) %></span>
+          </div>
+          <div id="totalcharged">
+            <span>Total Charged</span>
+            <span><%= (order.total_price * .12) + order.total_price %></span>
+          </div>
+        </div>
       </div>
-      <div class="charge-breakdown">
-        <div id = "subtotal">
-          <span>Your Subtotal</span>
-          <span> 32.00</span>
-        </div>
-        <div id = "tax">
-          <span>taxes and fees</span>
-          <span>5.16</span>
-        </div>
-        <div id = "totalcharged">
-          <span>Total Charged</span>
-          <span>49.15</span>
-        </div>
-      </div>
+       <div class="button">
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Return To Main</button>
+       </div>
+
+   </div>
     </div>
 
-  </div>
- <button class ="btn "></button>
+
 </body>
 
 </html>
