@@ -47,7 +47,7 @@
           <p id="eta">Delivery Time<br>Shadee, Put the estimated time here!</p>
         </div>
           <div class="delivery-address">
-            <p id="mailing-address">Delivery Address<br>Shadee, an address here please!</p>
+            <p id="mailing-address">Pick Up Address<br>162 Water St. Vancouver, BC</p>
           </div>
       </div>
 
@@ -65,18 +65,19 @@
           </div>
           <% } %>
         </div>
+        <hr>
         <div class="charge-breakdown">
           <div id="subtotal">
             <span>Your Subtotal</span>
-            <span> <%= order.total_price%></span>
+            <span>$<%= (Math.round(order.total_price).toFixed(2))%></span>
           </div>
           <div id="tax">
-            <span>taxes and fees</span>
-            <span><%= (order.total_price * .12) %></span>
+            <span>Taxes & Fees</span>
+            <span>$<%= (order.total_price * .12) %></span>
           </div>
           <div id="totalcharged">
             <span>Total Charged</span>
-            <span><%= (order.total_price * .12) + order.total_price %></span>
+            <span>$<%= (order.total_price * .12) + order.total_price %></span>
           </div>
         </div>
       </div>

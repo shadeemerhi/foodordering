@@ -102,6 +102,24 @@ body{
 }
 
 
-// button{
-//   border-radius: 5px !important;
-// }
+  #subtotal{
+    display:flex;
+    justify-content: space-between;
+    padding: 2px;
+    font-style:italic;
+  }
+
+  #tax {
+    display:flex;
+    justify-content: space-between;
+    padding: 2px;
+    font-style:italic;
+  }
+
+  #totalcharged {
+    display:flex;
+    justify-content: space-between;
+    padding: 2px;
+    font-style:italic;
+  }
+
