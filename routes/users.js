@@ -71,7 +71,7 @@ module.exports = (db) => {
   router.get('/admin', (req, res) => {
 
     const query =
-      `SELECT orders.id, users.id AS user_id, dishes.name, dishes.price, orderItems.quantity, orders.total_price, orders.created_at, orders.time, status FROM orders
+      `SELECT orders.id, users.id AS user_id, dishes.name, dishes.price, orderItems.quantity, dishes.id AS dish_id, orders.total_price, orders.created_at, orders.time, status FROM orders
         JOIN orderItems ON order_id = orders.id
         JOIN dishes ON orderItems.dish_id = dishes.id
         JOIN users ON orders.user_id = users.id
@@ -144,7 +144,7 @@ module.exports = (db) => {
     console.log('we are in confirmation');
 
     const query = `
-      SELECT orders.id, dishes.name, dishes.price, orderItems.quantity, orders.total_price, orders.created_at, status FROM orders
+      SELECT orders.id, dishes.name, dishes.price, orderItems.quantity, dishes.id AS dish_id, orders.total_price, orders.created_at, status FROM orders
         JOIN orderItems ON order_id = orders.id
         JOIN dishes ON orderItems.dish_id = dishes.id
         WHERE orders.user_id = 1
@@ -175,7 +175,7 @@ module.exports = (db) => {
   router.get('/orders', (req, res) => {
 
     const query = `
-        SELECT orders.id, users.id AS user_id, dishes.name, dishes.price, orderItems.quantity, orders.total_price, orders.created_at, orders.time, status FROM orders
+        SELECT orders.id, users.id AS user_id, dishes.name, dishes.price, orderItems.quantity, dishes.id AS dish_id, orders.total_price, orders.created_at, orders.time, status FROM orders
         JOIN orderItems ON order_id = orders.id
         JOIN dishes ON orderItems.dish_id = dishes.id
         JOIN users ON orders.user_id = users.id
@@ -186,7 +186,7 @@ module.exports = (db) => {
       const orderDetails = data.rows;
       let orders = groupItemsByOrder(orderDetails);
       const filteredOrders = groupOrdersByStatus(orders);
-      console.log('details for orders page', filteredOrders);
+      console.log('details for orders page', filteredOrders[2][4]);
       templateVars = {
         newOrders: filteredOrders[0],
         confirmedOrders: filteredOrders[1],

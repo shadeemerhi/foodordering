@@ -80,6 +80,7 @@ const groupItemsByOrder = function(orderData) {
     output[i]['items'] = [];
     output[i]['quantity'] = [];
     output[i]['item_price'] = [];
+    output[i]['dish_id'] = [];
     output[i]['total_price'] = null;
     output[i]['status'] = null;
     output[i]['created_at'] = null;
@@ -94,6 +95,7 @@ const groupItemsByOrder = function(orderData) {
         output[i]['items'].push(orderData[j].name);
         output[i]['quantity'].push(orderData[j].quantity);
         output[i]['item_price'].push(orderData[j].price/100);
+        output[i]['dish_id'].push(orderData[j].dish_id);
         output[i]['total_price'] = orderData[j].total_price;
         output[i]['user_id'] = orderData[j].user_id;
         output[i]['status'] = orderData[j].status;
