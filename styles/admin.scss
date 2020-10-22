@@ -16,6 +16,7 @@ $border-color: #bbbbbb;
     &.disabled {
       background-color: #c9c9c9 !important;
       color: #707070;
+      box-shadow: none;
     }
   }
 }
@@ -72,7 +73,12 @@ $border-color: #bbbbbb;
         -moz-animation: pulse 3s infinite ease-in-out;
         animation: pulse 3s infinite ease-in-out;
       }
+    }
 
+    #time-input {
+      &.disabled {
+        color: #f0f0f0;
+      }
     }
 
   }

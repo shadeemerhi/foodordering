@@ -1,9 +1,13 @@
 $(document).ready(function() {
 
   const confirmed = $('.confirmed-order-container');
-  // console.log('new-orders', newOrders.length);
+  const newOrders = $('.new-order');
   if (confirmed.length === 0) {
     $('#new-order-icon').toggleClass('live');
+  }
+  if (newOrders.length !== 0) {
+    $('#admin-submit-btn').toggleClass('disabled');
+    $('#time-input').toggleClass('disabled');
   }
 
   // Add event listener to submit button to POST time to DB and Twilio
