@@ -28,22 +28,44 @@ $main-color: #FDA50F;
 
 }
 
-.price-order-container {
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  width: 30%;
-  margin-left: 2rem;
-  padding-right: 50px;
-  #total-price-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    // width: 30%;
-    // position: fixed;
+@media only screen and (min-width: 1250px) {
+  .price-order-container {
+  position: relative;
+  width: 100%;
   }
+
+
 }
+
+.order-container{
+  position: fixed;
+  right: 18%;
+  width: 20%;
+  // box-shadow: 0px 2px 3px red;
+  box-shadow: 0px 2px 3px #c9c9c9;
+  margin: 1% 0px 0px 5%;
+  padding-left: 0;
+  padding-right: 0;
+  border-radius: 8px;
+}
+
+// .price-order-container {
+
+//   position: fixed;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-end;
+//   width: 30%;
+//   margin-left: 2rem;
+//   padding-right: 50px;
+//   #total-price-container {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-between;
+//     // width: 30%;
+//     // position: fixed;
+//   }
+// }
 
 #your-order{
   p{
