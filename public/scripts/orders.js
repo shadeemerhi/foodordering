@@ -1,8 +1,5 @@
 $(document).ready(function() {
 
-
-
-
   const createOrderItems = function(order_id) {
 
     let orderItems = [];
@@ -28,10 +25,7 @@ $(document).ready(function() {
       item['name'] = itemName;
       orderItems.push(item);
     });
-
     return orderItems;
-
-
   }
 
   // Adding event listeners to each reorder button
@@ -52,10 +46,18 @@ $(document).ready(function() {
       dataType: 'json',
       contentType: 'application/json',
       data
-    }).then(window.location.href = '/users/confirmation');
-
+    })
+    .then(
+      $.ajax({
+        url: '/checkout',
+        type: 'POST',
+        dataType: 'json',
+        contentType: 'application/json',
+        data
+      }).then(window.location.href = '/users/confirmation')
+    )
+    .catch(e => console.log(e));
 
   });
-
 
 });
