@@ -49,11 +49,7 @@
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-    body {
-      background-image: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80"); background-repeat:no-repeat;background-position: center 45px bottom;
-    }
-    </style>
+
 
 </head>
 
@@ -62,127 +58,130 @@
     <%- include('partials/header.ejs') %>
   </header>
   <br>
-  <section class="container-fluid main-container text-center" id="everything-below-restaurant">
-    <div class="row">
-      <!-- <img src ="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" id = "under-image"> -->
-      <div class="col-lg-8 menu-container">
-        <h3 class="menu-section" id="section1">Starters</h3>
-        <% for (const dish in apps) { %>
-        <div class="container-fluid dish-container" id=<%=apps[dish].id%>>
-          <div class="row item-container">
-            <div class="col-lg-8 item-info">
-              <p class="item-name">
-                <%=apps[dish].name%>
-              </p>
-              <p class="item-description">
-                <%=apps[dish].description%>
-              </p>
-              <p class="item-price">
-                $<%=apps[dish].price/100 + '.00'%>
-              </p>
-            </div>
-            <div class="container col-4 text-center align-middle">
-              <button type="button" class="btn add-item-btn">Add Item</button>
-            </div>
-          </div>
-        </div>
-        <% } %>
-        <h3 class="menu-section" id="section1">Mains</h3>
-        <% for (const dish in apps) { %>
-        <div class="container-fluid dish-container" id=<%=mains[dish].id%>>
-          <div class="row item-container">
-            <div class="col-lg-8 item-info">
-              <p class="item-name">
-                <%=mains[dish].name%>
-              </p>
-              <p class="item-description">
-                <%=mains[dish].description%>
-              </p>
-              <p class="item-price">
-                $<%=mains[dish].price/100 + '.00'%>
-              </p>
-            </div>
-            <div class="container col-4 text-center align-middle">
-              <button type="button" class="btn add-item-btn">Add Item</button>
-            </div>
-          </div>
-        </div>
-        <% } %>
-        <h3 class="menu-section" id="section1">Desserts</h3>
-        <% for (const dish in desserts) { %>
-        <div class="container-fluid dish-container" id=<%=desserts[dish].id%>>
-          <div class="row item-container">
-            <div class="col-lg-8 item-info">
-              <p class="item-name">
-                <%=desserts[dish].name%>
-              </p>
-              <p class="item-description">
-                <%=desserts[dish].description%>
-              </p>
-              <p class="item-price">
-                $<%=desserts[dish].price/100 + '.00'%>
-              </p>
-            </div>
-            <div class="container col-4 text-center align-middle">
-              <button type="button" class="btn add-item-btn">Add Item</button>
-            </div>
-          </div>
-        </div>
-        <% } %>
-      </div>
-      <div class="col-lg-4 col-md-12 text-center order-container">
-        <div class="price-order-container">
-          <div class="container live-order">
-            <div class="container" id="your-order">
-              <p>Your Order</p>
-            </div>
-            <div class="order-item-container">
-              <div id="empty-order-elements">
-                <div class="text-center" id="empty-order-icon">
-                  <i class="fas fa-shopping-bag"></i>
+  <div class="superdiv">
+      <section class="container-fluid main-container text-center" id="everything-below-restaurant">
+        <div class="row">
+          <!-- <img src ="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" id = "under-image"> -->
+          <div class="col-lg-8 menu-container">
+            <h3 class="menu-section" id="section1">Starters</h3>
+            <% for (const dish in apps) { %>
+            <div class="container-fluid dish-container" id=<%=apps[dish].id%>>
+              <div class="row item-container">
+                <div class="col-lg-8 item-info">
+                  <p class="item-name">
+                    <%=apps[dish].name%>
+                  </p>
+                  <p class="item-description">
+                    <%=apps[dish].description%>
+                  </p>
+                  <p class="item-price">
+                    $<%=apps[dish].price/100 + '.00'%>
+                  </p>
                 </div>
-                <div class="text-center" id="empty-order-message">
-                  <p>Add some items!</p>
+                <div class="container col-4 text-center align-middle">
+                  <button type="button" class="btn add-item-btn">Add Item</button>
                 </div>
               </div>
             </div>
-            <div class="text-center d-flex" id="checkout-button">
-              <button type="button" class="btn checkout-btn btn-block disabled" data-toggle="modal"
-                data-target="#submitModal">
-                Checkout
-              </button>
+            <% } %>
+            <h3 class="menu-section" id="section1">Mains</h3>
+            <% for (const dish in apps) { %>
+            <div class="container-fluid dish-container" id=<%=mains[dish].id%>>
+              <div class="row item-container">
+                <div class="col-lg-8 item-info">
+                  <p class="item-name">
+                    <%=mains[dish].name%>
+                  </p>
+                  <p class="item-description">
+                    <%=mains[dish].description%>
+                  </p>
+                  <p class="item-price">
+                    $<%=mains[dish].price/100 + '.00'%>
+                  </p>
+                </div>
+                <div class="container col-4 text-center align-middle">
+                  <button type="button" class="btn add-item-btn">Add Item</button>
+                </div>
+              </div>
+            </div>
+            <% } %>
+            <h3 class="menu-section" id="section1">Desserts</h3>
+            <% for (const dish in desserts) { %>
+            <div class="container-fluid dish-container" id=<%=desserts[dish].id%>>
+              <div class="row item-container">
+                <div class="col-lg-8 item-info">
+                  <p class="item-name">
+                    <%=desserts[dish].name%>
+                  </p>
+                  <p class="item-description">
+                    <%=desserts[dish].description%>
+                  </p>
+                  <p class="item-price">
+                    $<%=desserts[dish].price/100 + '.00'%>
+                  </p>
+                </div>
+                <div class="container col-4 text-center align-middle">
+                  <button type="button" class="btn add-item-btn">Add Item</button>
+                </div>
+              </div>
+            </div>
+            <% } %>
+          </div>
+          <div class="col-lg-4 col-md-12 text-center order-container">
+            <div class="price-order-container">
+              <div class="container live-order">
+                <div class="container" id="your-order">
+                  <p>Your Order</p>
+                </div>
+                <div class="order-item-container">
+                  <div id="empty-order-elements">
+                    <div class="text-center" id="empty-order-icon">
+                      <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <div class="text-center" id="empty-order-message">
+                      <p>Add some items!</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center d-flex" id="checkout-button">
+                  <button type="button" class="btn checkout-btn btn-block disabled" data-toggle="modal"
+                    data-target="#submitModal">
+                    Checkout
+                  </button>
+                </div>
+              </div>
+              <div class="container" id="total-price-container">
+                <h4>Order Total:</h4>
+                <p id="order-total">$0.00</p>
+              </div>
             </div>
           </div>
-          <div class="container" id="total-price-container">
-            <h4>Order Total:</h4>
-            <p id="order-total">$0.00</p>
-          </div>
         </div>
-      </div>
+        <!-- Modal -->
+
     </div>
-    <!-- Modal -->
     <div class="modal fade" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Confirm Order</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            Are you sure you want to submit this order?
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn" id="final-submit-btn">Place Order</button>
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirm Order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Are you sure you want to submit this order?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn" id="final-submit-btn">Place Order</button>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    </div>
   </section>
+  </div>
 </body>
 
 </html>

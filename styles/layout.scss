@@ -28,10 +28,21 @@ body {
   padding:100px;
   padding-top:0px;
 }
+.superdiv{
+  display:flex;
 
-#under-image {
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  z-index: -1;
+  background-color:white;
+  margin: auto;
+  height: auto;
+  width: 70%;
+  border-radius: 10px;
+  opacity:0.85;
+
 }
+
+// #under-image {
+//   position: absolute;
+//   left: 0px;
+//   top: 0px;
+//   z-index: -1;
+// }
