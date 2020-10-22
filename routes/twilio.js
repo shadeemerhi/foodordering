@@ -37,7 +37,7 @@ module.exports = () => {
 
     client.messages.create({
 
-      body: `Your order will be ready for pickup in ${pickupTime}.`,
+      body: `Your order will be ready for pickup in ${pickupTime} Minutes.`,
       from: '+15712003029',
       to: '+14039753519'
     }).then(message => {
