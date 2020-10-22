@@ -1,10 +1,22 @@
+$main-color: #FDA50F;
+$border-color: #bbbbbb;
+
 header {
   height: 5rem;
-
 
   .navbar {
     padding-top: 1rem;
     background-color: white;
+
+    .navbar-brand {
+      font-family: 'Cabin', sans-serif;
+      font-size: 2rem;
+      margin-left: 1rem;
+    }
+  }
+
+  .fa-receipt {
+    font-size: 1.5rem;
   }
 
   .navbar-brand {
@@ -15,5 +27,13 @@ header {
   button {
     color: black !important;
     font-size: 1.5rem;
+  }
+
+  #order-now-btn {
+    background-color: $main-color;
+    color: white !important;
+    margin-left: 2rem;
+    transition: 0.3s ease-in-out;
+    border-radius: 8px;
   }
 }
