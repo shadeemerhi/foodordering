@@ -5,6 +5,22 @@ body {
   background-repeat: no-repeat;
   background-position: top;
 }
+.superdiv-2 {
+  background-color: rgb(226, 226, 226) !important;
+  margin: auto;
+  width: 70%;
+  margin-top: 2rem;
+  border-radius: 20px;
+  opacity: 0.95;
+
+  article{
+    border-radius: 8px !important;
+  }
+
+  .all-items-container{
+    width: 40% !important;
+  }
+}
 .reorder-btn {
   background-color: $main-color !important;
   color: white !important;
