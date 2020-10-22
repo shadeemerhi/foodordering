@@ -1,151 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Restaurant | Orders</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="../styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="../styles/header.css" type="text/css" />
-    <link rel="stylesheet" href="../styles/admin.css" type="text/css" />
-    <link rel="stylesheet" href="../styles/orders.css" type="text/css" />
-    <link href=“https://fonts.googleapis.com/css2?family=Commissioner:wght@400;800&display=swap” rel=“stylesheet”>
+<head>
+  <title>Restaurant | Orders</title>
 
-    <!-- Bootstrap CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <!-- CSS -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/header.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/admin.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/orders.css" type="text/css" />
+  <link href=“https://fonts.googleapis.com/css2?family=Commissioner:wght@400;800&display=swap” rel=“stylesheet”>
 
-    <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  <!-- Bootstrap CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 
-    <!-- Font Awesome -->
-    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/v4-shims.js"></script>
+  <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/all.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.14.0/js/v4-shims.js"></script>
 
-    <!-- External JS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- External JS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <!-- App JS -->
-    <script type="text/javascript" src="/scripts/orders.js" async></script>
+  <!-- App JS -->
+  <script type="text/javascript" src="/scripts/orders.js" async></script>
 
 
 
-    <!-- NOT SURE IF WE NEED jQuery BELOW -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-  </head>
-  <body>
-    <header>
-      <%- include('partials/header.ejs') %>
-    </header>
+  <!-- NOT SURE IF WE NEED jQuery BELOW -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+</head>
+
+<body>
+  <header>
+    <%- include('partials/header.ejs') %>
+  </header>
+
+
+    <div class="superdiv-2">
       <div class="main-container">
         <div class="all-orders-container">
           <% if (newOrders.length !== 0) {%>
-            <h3 class="order-section" id="new-orders">New Orders</h3>
-            <% for (const order of newOrders) { %>
-              <article class="order-container new-order rounded" id=<%=order.id%>>
-                <div class="all-items-container">
-                  <p class="all-items-title">Items</p>
-                  <% for (const item in order.items) { %>
-                  <div class="item-container">
-                    <p class="item-quantity"><%=order.quantity[item]%></p>
-                    <p class="item-price"><%=order.items[item]%></p>
-                  </div>
-                  <% } %>
-                </div>
-                <div class="price-container">
-                  <p class="order-total-text">Order Total</p>
-                  <div class="total-price-container">
-                    <p class="order-total-price"><%=order['total_price']%></p>
-                  </div>
-                </div>
-                <div class="status-container">
-                  <p class="pickup-title">Pickup Time</p>
-                  <p><%=order['pickup_time']%></p>
-                </div>
-              </article>
-            <% } %>
-           <% } %>
-           <% if (confirmedOrders.length !== 0) { %>
-            <h3 class="order-section" id="confirmed-orders">Confirmed Orders</h3>
-            <% for (const order of confirmedOrders) { %>
-              <article class="order-container rounded" id=<%=order.id%>>
-                <div class="all-items-container">
-                  <p class="all-items-title">Items</p>
-                  <% for (const item in order.items) { %>
-                  <div class="item-container">
-                    <p class="item-quantity"><%=order.quantity[item]%></p>
-                    <p class="item-price"><%=order.items[item]%></p>
-                  </div>
-                  <% } %>
-                </div>
-                <div class="price-container">
-                  <p class="order-total-text">Order Total</p>
-                  <div class="total-price-container">
-                    <p class="order-total-price"><%=order['total_price']%></p>
-                  </div>
-                </div>
-                <div class="status-container">
-                  <p class="pickup-title">Pickup Time</p>
-                  <p><%=order['pickup_time']%> Minutes</p>
-                </div>
-              </article>
-            <% } %>
+          <h3 class="order-section" id="new-orders">New Orders</h3>
+          <% for (const order of newOrders) { %>
+          <article class="order-container new-order rounded" id=<%=order.id%>>
+            <div class="all-items-container">
+              <p class="all-items-title">Items</p>
+              <% for (const item in order.items) { %>
+              <div class="item-container">
+                <p class="item-quantity"><%=order.quantity[item]%></p>
+                <p class="item-price"><%=order.items[item]%></p>
+              </div>
+              <% } %>
+            </div>
+            <div class="price-container">
+              <p class="order-total-text">Order Total</p>
+              <div class="total-price-container">
+                <p class="order-total-price"><%=order['total_price']%></p>
+              </div>
+            </div>
+            <div class="status-container">
+              <p class="pickup-title">Pickup Time</p>
+              <p><%=order['pickup_time']%></p>
+            </div>
+          </article>
+          <% } %>
+          <% } %>
+          <% if (confirmedOrders.length !== 0) { %>
+          <h3 class="order-section" id="confirmed-orders">Confirmed Orders</h3>
+          <% for (const order of confirmedOrders) { %>
+          <article class="order-container rounded" id=<%=order.id%>>
+            <div class="all-items-container">
+              <p class="all-items-title">Items</p>
+              <% for (const item in order.items) { %>
+              <div class="item-container">
+                <p class="item-quantity"><%=order.quantity[item]%></p>
+                <p class="item-price"><%=order.items[item]%></p>
+              </div>
+              <% } %>
+            </div>
+            <div class="price-container">
+              <p class="order-total-text">Order Total</p>
+              <div class="total-price-container">
+                <p class="order-total-price"><%=order['total_price']%></p>
+              </div>
+            </div>
+            <div class="status-container">
+              <p class="pickup-title">Pickup Time</p>
+              <p><%=order['pickup_time']%> Minutes</p>
+            </div>
+          </article>
+          <% } %>
           <% } %>
           <h3 class="order-section" id="closed-orders">Order History</h3>
           <% for (const order of closedOrders) { %>
-            <article class="order-container rounded" id=<%=order.id%>>
-              <div class="all-items-container">
-                <p class="all-items-title">Items</p>
-                <% for (const item in order.items) { %>
-                <div class="item-container" value=<%=order['dish_id'][item]%>>
-                  <p class="item-quantity"><%=order.quantity[item]%></p>
-                  <p class="item-name"><%=order.items[item]%></p>
-                  <p class="item-cost">$<%=(Math.round(order['item_price'][item]*100)/100).toFixed(2)%> each</p>
-                </div>
-                <% } %>
+          <article class="order-container rounded" id=<%=order.id%>>
+            <div class="all-items-container">
+              <p class="all-items-title">Items</p>
+              <% for (const item in order.items) { %>
+              <div class="item-container" value=<%=order['dish_id'][item]%>>
+                <p class="item-quantity"><%=order.quantity[item]%></p>
+                <p class="item-name"><%=order.items[item]%></p>
+                <p class="item-cost">$<%=(Math.round(order['item_price'][item]*100)/100).toFixed(2)%> each</p>
               </div>
-              <div class="price-container">
-                <p class="order-total-text">Order Total</p>
-                <div class="total-price-container">
-                  <p class="order-total-price"><%=order['total_price']%></p>
-                </div>
-              </div>
-              <div class="btn-container">
-                <button type="button" class="btn reorder-btn" data-toggle="modal" data-target="#reorderSubmitModal">Re-order</button>
-              </div>
-            </article>
-          <% } %>
-        </div>
-        <div class="modal fade" id="reorderSubmitModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-          aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Confirm Order</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                Are you sure you want to submit this order?
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn " id="reorder-submit-btn">Place Order</button>
+              <% } %>
+            </div>
+            <div class="price-container">
+              <p class="order-total-text">Order Total</p>
+              <div class="total-price-container">
+                <p class="order-total-price"><%=order['total_price']%></p>
               </div>
             </div>
+            <div class="btn-container">
+              <button type="button" class="btn reorder-btn" data-toggle="modal"
+                data-target="#reorderSubmitModal">Re-order</button>
+            </div>
+          </article>
+          <% } %>
+        </div>
+    </div>
+
+    <div class="modal fade" id="reorderSubmitModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Confirm Order</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to submit this order?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn " id="reorder-submit-btn">Place Order</button>
           </div>
         </div>
       </div>
-  </body>
+    </div>
+  </div>
+</body>
+
 </html>
