@@ -18,6 +18,11 @@ body {
   }
 }
 
+#reorder-submit-btn {
+  background-color: $main-color !important;
+  color: white;
+}
+
 .status-container {
   display: flex;
   flex-direction: column;
