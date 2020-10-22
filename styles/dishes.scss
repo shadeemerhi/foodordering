@@ -41,8 +41,9 @@ $main-color: #FDA50F;
   .add-item-btn {
   background-color: $main-color !important;
   margin-top: 2.2rem;
-  color: black;
+  color: white;
   transition: 0.3s ease-in-out;
+  border-radius: 8px;
 
     &:hover {
       color: white;
@@ -62,12 +63,18 @@ body {
   background-attachment: fixed;
   width: 100%;
   height: auto;
-  // background-size: 100% 100%;
+  background-size: 100% auto;
 }
 
-// @media only screen and (min-width: 1620px) {
+// @media only screen and (max-width: 1340px) {
 //   body{
-//     width: 120%;
-//     height: auto;
+//     display: flex;
+//     flex-wrap: wrap;
+//   }
+//   .order-container{
+//     position: relative;
+//     width: 100%;
+//     right: 0;
+
 //   }
 // }

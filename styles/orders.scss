@@ -54,4 +54,48 @@ body {
   -ms-animation: pulse 3s infinite ease-in-out;
   -moz-animation: pulse 3s infinite ease-in-out;
   animation: pulse 3s infinite ease-in-out;
+
+.superdiv-2{
+  display:flex;
+
+  background-color:lightgray;
+  margin: auto;
+  height: auto;
+  width: 70%;
+  border-radius: 10px;
+  opacity:0.95;
+  padding-top: 45px;
+
+
+
+}
+
+.main-container {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-around;
+  margin: 0;
+
+
+
+  .all-orders-container {
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+
+
+  }
+
+  .order-section {
+    border-bottom: 1px solid $main-color;
+    margin: 1rem;
+
+  }
+
+  .button-container {
+  }
+
+  .admin-form-container {
+    display: flex;
+  }
 }
