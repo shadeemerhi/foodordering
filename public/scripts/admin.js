@@ -1,6 +1,10 @@
 $(document).ready(function() {
-  console.log('hi');
 
+  const confirmed = $('.confirmed-order-container');
+  // console.log('new-orders', newOrders.length);
+  if (confirmed.length === 0) {
+    $('#new-order-icon').toggleClass('live');
+  }
 
   // Add event listener to submit button to POST time to DB and Twilio
   $('.button-container').on('change', '#time-input', function() {
