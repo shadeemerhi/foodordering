@@ -60,7 +60,7 @@
                 <div class="price-container">
                   <p class="order-total-text title">Order Total</p>
                   <div class="total-price-container">
-                    <p class="order-total-price title">$<%=(Math.round(order['total_price']*100)/100).toFixed(2)%></p>
+                    <p class="order-total-price">$<%=(Math.round(order['total_price']*100)/100).toFixed(2)%></p>
                   </div>
                 </div>
               </article>
@@ -130,11 +130,11 @@
         </div>
         <div class="button-container">
           <div id="admin-form-container">
-            <div class="form-group mx-sm-3 mb-2">
+            <div class="input-container">
               <label for="time-input">Estimated Pickup Time</label>
               <input type="number" class="form-control" id="time-input" value="1" placeholder="Completion Time" min="1" max="200">
             </div>
-            <button type="submit" class="btn mb-2 rounded" id="admin-submit-btn">Submit</button>
+            <button type="submit" class="btn btn-block mb-2 rounded" id="admin-submit-btn">Submit</button>
           </div>
         </div>
       </div>

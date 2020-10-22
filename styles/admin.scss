@@ -35,6 +35,9 @@ $border-color: #bbbbbb;
   }
 
   .button-container {
+    display: flex;
+    justify-content: center;
+    width: auto;
   }
 
   .admin-form-container {
