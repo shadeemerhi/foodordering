@@ -39,17 +39,17 @@
           <% if (newOrders.length !== 0) { %>
             <h3 class="order-section" id="new-orders">New Orders</h3>
             <% for (const order of newOrders) { %>
-              <article class="order-container new-order rounded" id=<%=order.id%>>
+              <article class="order-container new-order" id=<%=order.id%>>
                 <div class="id-container">
-                  <p class="order-number-title">Order Number :</p>
+                  <p class="order-number-title title">Order Number:</p>
                   <p><%=order.id %></p>
                 </div>
                 <div class="user-id-container">
-                  <p class="order-number-title">User ID:</p>
+                  <p class="order-number-title title">User ID:</p>
                   <p><%=order['user_id']%></p>
                 </div>
                 <div class="all-items-container">
-                  <p class="all-items-title">Items</p>
+                  <p class="all-items-title title">Items</p>
                   <% for (const item in order.items) { %>
                   <div class="item-container">
                     <p class="item-quantity"><%=order.quantity[item]%></p>
@@ -58,9 +58,9 @@
                   <% } %>
                 </div>
                 <div class="price-container">
-                  <p class="order-total-text">Order Total</p>
+                  <p class="order-total-text title">Order Total</p>
                   <div class="total-price-container">
-                    <p class="order-total-price"><%=order['total_price']%></p>
+                    <p class="order-total-price title"><%=order['total_price']%></p>
                   </div>
                 </div>
               </article>
@@ -69,17 +69,17 @@
           <% if (confirmedOrders.length !== 0) { %>
             <h3 class="order-section" id="confirmed-orders">Confirmed Orders</h3>
             <% for (const order of confirmedOrders) { %>
-              <article class="order-container confirmed-order-container rounded" id=<%=order.id%>>
+              <article class="order-container confirmed-order-container" id=<%=order.id%>>
                 <div class="id-container">
-                  <p class="order-number-title">Order Number :</p>
+                  <p class="order-number-title title">Order Number:</p>
                   <p><%=order.id %></p>
                 </div>
                 <div class="user-id-container">
-                  <p class="order-number-title">User ID:</p>
+                  <p class="order-number-title title">User ID:</p>
                   <p><%=order['user_id']%></p>
                 </div>
                 <div class="all-items-container">
-                  <p class="all-items-title">Items</p>
+                  <p class="all-items-title title">Items</p>
                   <% for (const item in order.items) { %>
                   <div class="item-container">
                     <p class="item-quantity"><%=order.quantity[item]%></p>
@@ -88,7 +88,7 @@
                   <% } %>
                 </div>
                 <div class="price-container">
-                  <p class="order-total-text">Order Total</p>
+                  <p class="order-total-text title">Order Total</p>
                   <div class="total-price-container">
                     <p class="order-total-price"><%=order['total_price']%></p>
                   </div>
@@ -101,17 +101,17 @@
           <% } %>
           <h3 class="order-section" id="closed-orders">Closed Orders</h3>
           <% for (const order of closedOrders) { %>
-            <article class="order-container rounded" id=<%=order.id%>>
+            <article class="order-container" id=<%=order.id%>>
               <div class="id-container">
-                <p class="order-number-title">Order Number :</p>
+                <p class="order-number-title title">Order Number:</p>
                 <p><%=order.id %></p>
               </div>
               <div class="user-id-container">
-                <p class="order-number-title">User ID:</p>
+                <p class="order-number-title title">User ID:</p>
                 <p><%=order['user_id']%></p>
               </div>
               <div class="all-items-container">
-                <p class="all-items-title">Items</p>
+                <p class="all-items-title title">Items</p>
                 <% for (const item in order.items) { %>
                 <div class="item-container">
                   <p class="item-quantity"><%=order.quantity[item]%></p>
@@ -120,9 +120,9 @@
                 <% } %>
               </div>
               <div class="price-container">
-                <p class="order-total-text">Order Total</p>
+                <p class="order-total-text title">Order Total</p>
                 <div class="total-price-container">
-                  <p class="order-total-price"><%=order['total_price']%></p>
+                  <p class="order-total-price">$<%=(Math.round(order['total_price']*100)/100).toFixed(2)%></p>
                 </div>
               </div>
             </article>
