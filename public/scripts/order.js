@@ -83,12 +83,12 @@ $(document).ready(function() {
     updatePrice();
   });
 
-  $('.checkout-btn').on('click', function() {
-    console.log('order submitted');
-    const total = getTotalCost();
-    console.log('total order cost', total);
+  // $('.checkout-btn').on('click', function() {
+  //   console.log('order submitted');
+  //   const total = getTotalCost();
+  //   console.log('total order cost', total);
 
-  });
+  // });
 
   // Checks if the item being added to the order is already in the order
   const checkOrderForItem = function(selectedItem) {

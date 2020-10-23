@@ -50,14 +50,15 @@
                     <% for (const item in order.items) { %>
                     <div class="item-container">
                       <p class="item-quantity"><%=order.quantity[item]%></p>
-                      <p class="item-price"><%=order.items[item]%></p>
+                      <p class="item-name"><%=order.items[item]%></p>
+                      <p class="item-cost">$<%=(Math.round(order['item_price'][item]*100)/100).toFixed(2)%> each</p>
                     </div>
                     <% } %>
                   </div>
                   <div class="price-container">
                     <p class="order-total-text">Order Total</p>
                     <div class="total-price-container">
-                      <p class="order-total-price"><%=order['total_price']%></p>
+                      <p class="order-total-price">$<%=(Math.round(order['total_price']*100)/100).toFixed(2)%></p>
                     </div>
                   </div>
                   <div class="status-container">
@@ -77,14 +78,15 @@
                     <% for (const item in order.items) { %>
                     <div class="item-container">
                       <p class="item-quantity"><%=order.quantity[item]%></p>
-                      <p class="item-price"><%=order.items[item]%></p>
+                      <p class="item-name"><%=order.items[item]%></p>
+                      <p class="item-cost">$<%=(Math.round(order['item_price'][item]*100)/100).toFixed(2)%> each</p>
                     </div>
                     <% } %>
                   </div>
                   <div class="price-container">
                     <p class="order-total-text">Order Total</p>
                     <div class="total-price-container">
-                      <p class="order-total-price"><%=order['total_price']%></p>
+                      <p class="order-total-price">$<%=(Math.round(order['total_price']*100)/100).toFixed(2)%></p>
                     </div>
                   </div>
                   <div class="status-container">
@@ -110,7 +112,7 @@
                 <div class="price-container">
                   <p class="order-total-text">Order Total</p>
                   <div class="total-price-container">
-                    <p class="order-total-price"><%=order['total_price']%></p>
+                    <p class="order-total-price">$<%=(Math.round(order['total_price']*100)/100).toFixed(2)%></p>
                   </div>
                 </div>
                 <div class="btn-container">

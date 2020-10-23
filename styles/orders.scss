@@ -1,15 +1,21 @@
 $main-color: #FDA50F;
 $border-color: #bbbbbb;
+
 body {
   background-image: url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80");
   background-repeat: no-repeat;
   background-position: top;
+  background-attachment: fixed;
+  width: 100%;
+  height: auto;
+  background-size: 100% auto;
 }
+
 .superdiv-2 {
-  background-color: rgb(226, 226, 226) !important;
+  background-color: white !important;
   margin: auto;
   width: 70%;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   border-radius: 20px;
   opacity: 0.95;
 
@@ -18,7 +24,7 @@ body {
   }
 
   .all-items-container{
-    width: 40% !important;
+    width: 45% !important;
   }
 }
 .reorder-btn {

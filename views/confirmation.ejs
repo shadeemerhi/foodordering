@@ -39,13 +39,10 @@
    <div class="everything-middle">
     <div class="container all-container">
       <h1> Thanks for your order!</h1>
-      <h4>You'll be munching in no time! We've sent you a text confirmation.</h4>
+      <h4>You'll be munching in no time! We'll send you a text with the pickup time.</h4>
       <!-- EJS variable for phone number goes here -->
       <div class="jumbotron jumbotron-fluid">
 
-        <div class="delivery-time">
-          <p id="eta">Delivery Time<br>Shadee, Put the estimated time here!</p>
-        </div>
           <div class="delivery-address">
             <p id="mailing-address">Pick Up Address<br>162 Water St. Vancouver, BC</p>
           </div>
@@ -69,15 +66,15 @@
         <div class="charge-breakdown">
           <div id="subtotal">
             <span>Your Subtotal</span>
-            <span>$<%= (Math.round(order.total_price).toFixed(2))%></span>
+            <span>$<%=(Math.round(order.total_price*100)/100).toFixed(2)%></span>
           </div>
           <div id="tax">
             <span>Taxes & Fees</span>
-            <span>$<%= (order.total_price * .12) %></span>
+            <span>$<%= (Math.round((order.total_price * .12)*100)/100).toFixed(2) %></span>
           </div>
           <div id="totalcharged">
             <span>Total Charged</span>
-            <span>$<%= (order.total_price * .12) + order.total_price %></span>
+            <span>$<%= (Math.round(((order.total_price * .12) + order.total_price)*100)/100).toFixed(2) %></span>
           </div>
         </div>
       </div>

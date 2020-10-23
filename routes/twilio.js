@@ -21,7 +21,7 @@ module.exports = () => {
 
       body: `Order received: ${orderMessage}. Total Amount: $${orderTotal}`,
       from: '+15712003029',
-      to: '+14036305730'
+      to: '+14039753519'
     }).then(message => {
       console.log(message.sid);
     });
@@ -39,7 +39,7 @@ module.exports = () => {
 
       body: `Your order will be ready for pickup in ${pickupTime} Minutes.`,
       from: '+15712003029',
-      to: '+14039753519'
+      to: '+14036305730'
     }).then(message => {
       console.log(message.sid);
       console.log('This worked hahaha');
