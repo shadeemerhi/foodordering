@@ -10,17 +10,17 @@ Back-end: Node.js, Express, EJS, PostgresSQL
 
 ## Final Product
 
-!["Customer ordering page with an empty order"]()
-!["Customer ordering page with items in the order"]()
-!["Customer confirmation prompt"]()
-!["Customer order confirmation page showing order summary"]()
-!["Customer order history page showing the new order with a status of pending"]()
-!["Text message received by the restaurant with order details via Twilio's SMS API"]()
-!["Restaurant/admin page showing the new order - restaurant can specify a pickup time"]()
-!["Text message received by the customer with the specified pickup time via Twilio's SMS API"]()
-!["Customer order history page updated with pickup time specified by the restaurant"]()
-!["After customer pickup, restaurant can close the order, moving it into the 'Closed Orders' section"]()
-!["Customers are able to re-order previous orders directly from their order history page"]()
+![Customer ordering page with an empty order]()
+![Customer ordering page with items in the order]()
+![Customer confirmation prompt]()
+![Customer order confirmation page showing order summary]()
+![Customer order history page showing the new order with a status of pending]()
+![Text message received by the restaurant with order details via Twilio's SMS API]()
+![Restaurant/admin page showing the new order - restaurant can specify a pickup time]()
+![Text message received by the customer with the specified pickup time via Twilio's SMS API]()
+![Customer order history page updated with pickup time specified by the restaurant]()
+![After customer pickup, restaurant can close the order, moving it into the 'Closed Orders' section]()
+![Customers are able to re-order previous orders directly from their order history page]()
 
 
 ## Dependencies
