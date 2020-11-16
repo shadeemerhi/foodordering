@@ -5,7 +5,7 @@ Foodood is a full stack web application that allows users to place orders at a s
 ## Tech Stack
 
 Front-end: JavaScript, CSS, HTML5, jQuery, Sass, Bootstrap <br/>
-Back-end: Node.js, Express, EJS, PostgresSQL
+Back-end: Node.js, Express, EJS, PostgreSQL
 
 
 ## Final Product
